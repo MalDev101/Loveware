@@ -22,7 +22,7 @@ Some very nasty payloads will start that will kill your computer in the end.
 If you choose *yes* you will be able to **recover your files** or **maybe use your
 computer** after some **fun payloads**.
 
-Thats it for now I hope you enjoye our *"little project"*
+Thats it for now I hope you enjoy our *"little project"*
 
 ![Loveware](https://github.com/TheG0df2ther/Loveware/blob/master/Extras/Banner.jpg)
 
