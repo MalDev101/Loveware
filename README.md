@@ -1,8 +1,14 @@
 # Loveware
 [![HitCount](http://hits.dwyl.com/The_G0df@ther/Loveware.svg)](http://hits.dwyl.com/The_G0df@ther/Loveware)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-red.svg?style=round)](https://github.com/TheG0df2ther/Loveware/issues/1)
+[![GitHub stars](https://img.shields.io/github/stars/TheG0df2ther/Loveware.svg?style=social&label=Star&maxAge=2592000)](https://github.com/TheG0df2ther/Loveware/stargazers)
+
+
 
 
 *A community driven computer worm*
+
+
 
 ![Loveware](https://github.com/TheG0df2ther/Loveware/blob/master/Extras/Loveware.png)
 
