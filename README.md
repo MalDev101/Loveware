@@ -1,6 +1,7 @@
 # Loveware
 *A community driven computer worm*
 
+[![HitCount](http://hits.dwyl.com/The_G0df@ther/Loveware.svg)](http://hits.dwyl.com/The_G0df@ther/Loveware)
 
 ![Loveware](https://github.com/TheG0df2ther/Loveware/blob/master/Extras/Loveware.png)
 
