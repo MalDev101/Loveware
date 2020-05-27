@@ -10,8 +10,6 @@
 
 
 
-![Loveware](https://github.com/TheG0df2ther/Loveware/blob/master/Extras/Loveware.png)
-
 # Disclaimer
 *A classic disclaimer*
 
@@ -32,6 +30,6 @@ computer** after some **fun payloads**.
 
 Thats it for now I hope you enjoy our *"little project"*
 
-![Loveware](https://github.com/TheG0df2ther/Loveware/blob/master/Extras/Banner.jpg)
+FOR MORE INFORMATION GO ![HERE](https://github.com/TheG0df2ther/Loveware/wiki)
 
 #CreateMalwareForFunNotProfit
