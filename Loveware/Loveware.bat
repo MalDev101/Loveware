@@ -602,6 +602,10 @@ echo shutdown /s>>LoveChoice.bat
 
 start LoveChoice.bat
 
+:: Put on some music
+
+start /min https://www.youtube.com/watch?v=XpqqjU7u5Yc
+
 :: Activate LoveLetter if someone closes LoveChoice
 
 :LOVE
