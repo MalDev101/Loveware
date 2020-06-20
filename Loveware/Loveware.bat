@@ -80,7 +80,8 @@ SET var=%%F
 echo %var%
 
 if %var% == VirtualBox (
-    MessageBox.Show("ERROR could not run application", Valentine);
+    MessageBox.Show("ERROR could not run application", Windows Command Center);
+    pause
 ) else (
     goto valentine
 
@@ -96,6 +97,7 @@ set today=%Year%
 for /f "delims=" %%a in ('c:\date.exe +%%w') do set DayOfWeek=%%a
 if %DayOfWeek% == 14-02-%Year% (
     MessageBox.Show("Happy Valentine!!", Valentine);
+    pause
 ) else (
     goto :admin
 )
