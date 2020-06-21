@@ -34,12 +34,12 @@ Thats it for now I hope you enjoy our *"little project"*
 
 Loveware infected map: https://canarytokens.org/manage?token=h8blu81q8j2vzu825fmpzut7r&auth=e8be20c708872b669cd4562d35b5abf7
 *Track all infected by Loveware people*
-*  *
-*  *
-*   *
-*   *
-*   *
-*   *
+        *  *
+        *  *
+        *   *
+        *   *
+         *   *
+        *   *
 FOR MORE INFORMATION GO ![HERE](https://github.com/TheG0df2ther/Loveware/wiki)
 
 #CreateMalwareForFunNotProfit
