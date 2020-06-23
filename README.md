@@ -2,6 +2,7 @@
 [![HitCount](http://hits.dwyl.com/The_G0df@ther/Loveware.svg)](http://hits.dwyl.com/The_G0df@ther/Loveware)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-red.svg?style=round)](https://github.com/TheG0df2ther/Loveware/issues/1)
 [![GitHub stars](https://img.shields.io/github/stars/TheG0df2ther/Loveware.svg?style=social&label=Star&maxAge=2592000)](https://github.com/TheG0df2ther/Loveware/stargazers)
+[![Join the chat at https://gitter.im/Malware/Loveware](https://badges.gitter.im/Malware/Loveware.svg)](https://gitter.im/Malware/Loveware?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
 
