@@ -1,5 +1,7 @@
 @echo off
 
+:: THIS VERSION CAN CONTAIN BUGS
+::
 :: LOVEWARE v9.0
 ::
 ::
