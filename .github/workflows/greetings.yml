@@ -1,6 +1,6 @@
 name: Greetings
 
-on: [pull_request, issues]
+on: [pull_request, issues, fork]
 
 jobs:
   greeting:
@@ -11,3 +11,4 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: 'Thanks for helping us evolve and fix our issues'' Thanks a bunch for opening your first issue! 🙏'
         pr-message: 'Please make it a beatiful code! And make us proud!! :)'' Thanks a lot for making your first pull request'
+        fork-message: 'Please make it a beatiful code! And make us proud!! :)'' Thanks a lot for forking this repository'
