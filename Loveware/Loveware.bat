@@ -21,8 +21,8 @@
 :: |XSS worm  |NOT THERE YET ;)                         |
 :: |Adware    |NO                                       |
 :: |RAT       |I AM NOT SO BAD                          |
-:: |Backdoor  |PROBABLY NOT ;) (NO)                     |
-:: |YOUR DOOM!|DEFINETLY!!!!!!!!!!                      |
+:: |Backdoor  |PROBABLY NOT ;) (NO)                     |       
+:: |YOUR DOOM!|DEFINETLY!!!!!!!!!!                      |         
 ::
 :: IF YOU FIX A BUG OR ADD SOMETHING NEW TO THE SOFTWARE 
 :: YOUR NAME WILL APPEAR HERE:
